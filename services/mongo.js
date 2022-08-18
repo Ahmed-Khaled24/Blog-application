@@ -7,11 +7,19 @@ mongoose.connection
 .on('error', (err) => {
     console.log('MongoDB connection error: ', err);
 })
+.on('disconnected', () => {
+    console.log('MongoDB disconnected successfully')
+})
 
 async function connectMongo(){
-   await mongoose.connect(process.env.MONGO_URL);
+    await mongoose.connect(process.env.MONGO_URL);
+}
+
+async function disconnectMongo(){
+    await mongoose.disconnect();
 }
 
 module.exports = {
     connectMongo,
+    disconnectMongo,
 }
