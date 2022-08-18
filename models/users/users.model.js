@@ -2,7 +2,7 @@ const Users = require('./users.mongo');
 
 async function db_addNewUser(user){
     try{
-        await Users.create(user);
+        return await Users.create(user);
     } catch(err){
         throw err;
     }
@@ -10,8 +10,7 @@ async function db_addNewUser(user){
 
 async function db_getUserData(userId){
     try{
-        const user = await Users.findById(userId,{__v: 0});
-        return user;
+        return await Users.findById(userId,{__v: 0, password: 0});
     } catch(err){
         throw err;
     }
@@ -19,7 +18,7 @@ async function db_getUserData(userId){
 
 async function db_getAllUsersData(){
     try{
-        return await Users.find({});
+        return await Users.find({}, {__v: 0, password: 0});
     } catch(err){
         throw err;
     }
