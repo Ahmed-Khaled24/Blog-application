@@ -24,9 +24,13 @@ async function addNewUser(req, res){
     }
 
     try{
-        await db_addNewUser(user);
+        const newUser = await db_addNewUser(user);
         return res.status(201).json({
-            success: "user created successfully"
+            success: "user created successfully",
+            user: {
+                username: newUser.username,
+                id: newUser.id
+            },
         })
     } catch(err){
         return res.status(500).json({
