@@ -2,7 +2,7 @@ const { Router } = require('express');
 const {
     addNewPost, 
     getAllVisiblePosts,
-    getUserPosts,
+    getPost,
 } = require('../controllers/posts.controller');
 
 const postsRouter = Router();
@@ -12,8 +12,8 @@ postsRouter.route('/')
 .post(addNewPost)
 
 
-postsRouter.route('/:userId')
-.get(getUserPosts)
+postsRouter.route('/:postId')
+.get(getPost)
 
 
 module.exports = postsRouter;
