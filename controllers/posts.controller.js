@@ -1,7 +1,7 @@
 const {
     db_addNewPost,
     db_getAllVisiblePosts,
-    db_getUserPosts,
+    db_getPost,
 } = require('../models/posts/posts.model');
 
  const {
@@ -11,8 +11,8 @@ const {
 async function addNewPost(req, res){
     const post  = req.body;
     const user = req.user;
-    const { postIsValid, validationMessage } = validatePost(post);   
-    if(postIsValid){
+    const { isValid, validationMessage } = validatePost(post);   
+    if(isValid){
         post.createdBy = user.id;
         post.createdAt = Date();
         try {
@@ -32,7 +32,7 @@ async function addNewPost(req, res){
     }
 }
 
-async function getAllVisiblePosts(rea, res){
+async function getAllVisiblePosts(req, res){
     try{
         const posts = await db_getAllVisiblePosts();
         return res.status(200).json(posts);
@@ -43,11 +43,11 @@ async function getAllVisiblePosts(rea, res){
     }
 }
 
-async function getUserPosts(req, res){
-    const userId = req.params.userId;
+async function getPost(req, res){
+    const userId = req.params.postId;
     try{
-        const posts = await db_getUserPosts(userId);
-        return res.status(200).json(posts);
+        const post = await db_getPost(postId);
+        return res.status(200).json(post);
     } catch(err){
         return res.status(500).json({
             error: err.message,
@@ -58,5 +58,5 @@ async function getUserPosts(req, res){
 module.exports = {
     addNewPost, 
     getAllVisiblePosts,
-    getUserPosts,
+    getPost,
 }
