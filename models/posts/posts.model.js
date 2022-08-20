@@ -16,9 +16,9 @@ async function db_getAllVisiblePosts(){
     }
 }
 
-async function db_getUserPosts(userId){
+async function db_getPost(postId){
     try{
-        return Posts.find({createdBy: userId}, {__v: 0});
+        return Posts.findById(postId, {__v: 0});
     } catch (err) {
         throw(err);
     }
@@ -27,5 +27,5 @@ async function db_getUserPosts(userId){
 module.exports = {
     db_addNewPost,
     db_getAllVisiblePosts,
-    db_getUserPosts,
+    db_getPost,
 }
