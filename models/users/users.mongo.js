@@ -15,6 +15,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    salt:{
+        type: String,
+        required: true,
+    },
     userSource: {
         type: String,
         required: true,
