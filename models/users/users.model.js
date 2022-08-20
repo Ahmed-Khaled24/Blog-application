@@ -1,4 +1,5 @@
 const Users = require('./users.mongo');
+const Posts = require('../posts/posts.mongo');
 
 async function db_addNewUser(user){
     try{
@@ -24,8 +25,16 @@ async function db_getAllUsersData(){
     }
 }
 
+async function db_getUserPosts(userId){
+    try{
+        return await Posts.find({createdBy: userId}, {__v: 0});
+    } catch(err){
+        throw(err);
+    }
+}
 module.exports = {
     db_addNewUser,
     db_getUserData,
     db_getAllUsersData,
+    db_getUserPosts,
 }
