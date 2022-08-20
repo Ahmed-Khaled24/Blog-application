@@ -3,26 +3,32 @@ const {
     db_getUserData,
     db_getAllUsersData,
 } = require('../models/users/users.model');
+const {
+    validateUserInitialData,
+} = require('../util/users.util');
+const {
+    generatePassword,
+    verifyPassword,
+} = require('../util/password.util');
 
-async function addNewUser(req, res){
 
-    if(!req.body.username){
-        return res.status(400).json({error: 'username is missing'});
-    } else if(!req.body.email){
-        return res.status(400).json({error: 'email is missing'});
-    } else if(!req.body.password){
-        return res.status(400).json({error: 'password is missing'});
+async function addNewUser(req, res){  
+    const{isValid, validationMessage} = validateUserInitialData(req.body);
+    if(!isValid){
+        return res.status(400).json({
+            error: validationMessage,
+        })
     }
-
+    const{hashPassword, salt} = generatePassword(req.body.password);
     const user = {
         username: req.body.username,
         email: req.body.email,
-        password: req.body.password,
+        password: hashPassword,
+        salt: salt,
         userSource: 'Local',
         registerDate: Date(),
         active: true
     }
-
     try{
         const newUser = await db_addNewUser(user);
         return res.status(201).json({
