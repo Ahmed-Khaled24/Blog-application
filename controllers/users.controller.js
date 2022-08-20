@@ -2,6 +2,7 @@ const {
     db_addNewUser,
     db_getUserData,
     db_getAllUsersData,
+    db_getUserPosts
 } = require('../models/users/users.model');
 const {
     validateUserInitialData,
@@ -10,7 +11,6 @@ const {
     generatePassword,
     verifyPassword,
 } = require('../util/password.util');
-
 
 async function addNewUser(req, res){  
     const{isValid, validationMessage} = validateUserInitialData(req.body);
@@ -46,7 +46,7 @@ async function addNewUser(req, res){
 }
 
 async function getUserData(req, res){
-    const userId = req.params.id;
+    const userId = req.params.userId;
     try{
         const user = await db_getUserData(userId);
         if(user) {
@@ -72,8 +72,20 @@ async function getAllUsersData(req, res){
     }
 }
 
+async function getUserPosts(req, res){
+    const userId = req.params.userId;
+    try{
+        const posts = await db_getUserPosts(userId);
+        return res.status(200).json(posts);
+    } catch(err){
+        return res.status(500).json({
+            error: err.message,
+        })
+    }
+}
 module.exports = {
     addNewUser, 
     getUserData,
     getAllUsersData,
+    getUserPosts,
 }
