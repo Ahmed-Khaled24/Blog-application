@@ -9,11 +9,19 @@ async function db_addNewUser(user){
     }
 }
 
-async function db_getUserData(userId){
+async function db_getUserById(userId){
     try{
         return await Users.findById(userId);
     } catch(err){
         throw err;
+    }
+}
+
+async function db_getUserByUsername(username){
+    try{
+        return await Users.findOne({username: username});
+    } catch(err) {
+        throw(err)
     }
 }
 
@@ -34,7 +42,8 @@ async function db_getUserPosts(userId){
 }
 module.exports = {
     db_addNewUser,
-    db_getUserData,
+    db_getUserById,
     db_getAllUsersData,
+    db_getUserByUsername,
     db_getUserPosts,
 }
