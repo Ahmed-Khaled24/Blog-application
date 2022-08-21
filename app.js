@@ -1,5 +1,5 @@
 const express = require('express');
-const passport = require('passport');
+const passport = require('./config/passport.config');
 const session = require('cookie-session');
 const usersRouter = require('./routers/users.router');
 const postsRouter = require('./routers/posts.router');
