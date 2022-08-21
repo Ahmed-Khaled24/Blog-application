@@ -1,6 +1,7 @@
 const express = require('express');
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
 const passport = require('./config/passport.config');
-const session = require('cookie-session');
 const usersRouter = require('./routers/users.router');
 const postsRouter = require('./routers/posts.router');
 const viewsRouter = require('./routers/views.router');
@@ -10,9 +11,12 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(session({
     name: 'KH-Blog',
-    keys: [process.env.COOKIE_KEY],
+    secret: process.env.SESSION_SECRET,
+    store: MongoStore.create({ mongoUrl: process.env.MONGO_URL}),
+    saveUninitialized: false,
+    resave: false,
     cookie:{
-        maxAge: 1000 * 60 * 60 * 24,
+        maxAge: 1000 * 60 * 60 * 24, // 1 day
     }
 }));
 app.use(passport.initialize());
