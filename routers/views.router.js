@@ -3,67 +3,82 @@ const passport = require('passport');
 
 const viewsRouter = Router();
 
+
+function checkLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        next();
+    } else {
+        return res.status(302).redirect('/login');
+    }
+}
+
+
 viewsRouter.route('/')
 .get((req, res) => {
-    res.status(200).send('HOME PAGE')
+    return res.status(200).send('HOME PAGE')
 });
 
 
 viewsRouter.route('/register')
 .get((req, res) => {
-    res.status(200).send('REGISTER PAGE');
+    return res.status(200).send('REGISTER PAGE');
 });
 
 
 viewsRouter.route('/login')
 .get((req, res) => {
-    res.send('LOGIN PAGE');
+    return res.send('LOGIN PAGE');
 })
-.post(passport.authenticate('local', 
-    {
-        failureRedirect: '/login',
-        successRedirect: '/all-posts'
-    }
-));
+.post(passport.authenticate('local', {
+    successRedirect: '/all-posts',
+    failureRedirect: '/login',
+}));
 
 
 viewsRouter.route('/guest')
 .get((req, res) => {
-    res.status(200).send('GUEST PAGE');
+    return res.status(200).send('GUEST PAGE');
 });
 
 
 viewsRouter.route('/my-posts')
-.get(passport.authenticate('local', {failureRedirect: '/login'}),
-    (req, res) => {
-        res.status(200).send('MY POSTS PAGE');
+.get(checkLoggedIn, (req, res) => {
+        return res.status(200).send('MY POSTS PAGE');
 });
 
 
 viewsRouter.route('/all-posts')
-.get(passport.authenticate('local', {failureRedirect: '/login'}),
-    (req, res)=>{
-        res.status(200).send('ALL POSTS PAGE');
+.get(checkLoggedIn, (req, res) => {
+        return res.status(200).send('ALL POSTS PAGE');
 });
 
  
 viewsRouter.route('/account')
-.get(passport.authenticate('local', {failureRedirect: '/login'}),
-    (req, res)=>{
-        res.status(200).send('ACCOUNT PAGE');
+.get(checkLoggedIn, (req, res) => {
+        return res.status(200).send('ACCOUNT PAGE');
 });
 
 
 viewsRouter.route('/compose')
-.get(passport.authenticate('local', {failureRedirect: '/login'}),
-    (req, res)=>{
-        res.status(200).send('COMPOSE PAGE');
+.get(checkLoggedIn, (req, res) => {
+        return res.status(200).send('COMPOSE PAGE');
 });
+
+
+viewsRouter.route('/logout')
+.post(checkLoggedIn, (req, res) => {
+    req.logout((err) => {
+        if(err)
+            return res.status(500).json({error: err.message})   
+    });
+    return res.status(302).redirect('/');
+})
+
 
 viewsRouter.route('/*')
 .get((req, res) => {
-    res.status(404).send('ERROR 404 PAGE NOT FOUND');
-})
+    return res.status(404).send('ERROR 404 PAGE NOT FOUND');
+});
 
 
 module.exports = viewsRouter;
