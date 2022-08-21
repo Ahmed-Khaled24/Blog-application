@@ -1,16 +1,15 @@
 const passport = require('passport');
 const localStrategy = require('passport-local');
-const {db_getUserData} = require('../models/users/users.model');
 const {verifyPassword} = require('../util/password.util');
+const {
+    db_getUserByUsername,
+    db_getUserById,
+} = require('../models/users/users.model');
 
-const fieldsNameConfig = {
-    usernameField: 'id',
-    passport: 'password'
-}
 
-async function localVerify(userId, password, done){
+async function localVerify(username, password, done){
     try{
-        const user = await db_getUserData(userId);
+        const user = await db_getUserByUsername(username);
         if(!user){
             return done(null, false);
         }
@@ -24,14 +23,14 @@ async function localVerify(userId, password, done){
     }
 }
 
-passport.use('local', new localStrategy(fieldsNameConfig, localVerify));
+passport.use('local', new localStrategy(localVerify));
 
 passport.serializeUser((user, done)=>{
     return done(null, user.id);
 });
 
 passport.deserializeUser(async (userId, done)=>{
-    const user = await db_getUserData(userId);
+    const user = await db_getUserById(userId);
     return done(null, user);
 });
 
