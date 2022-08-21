@@ -11,7 +11,6 @@ const fieldsNameConfig = {
 async function localVerify(userId, password, done){
     try{
         const user = await db_getUserData(userId);
-        console.log(user);
         if(!user){
             return done(null, false);
         }
@@ -31,8 +30,8 @@ passport.serializeUser((user, done)=>{
     return done(null, user.id);
 });
 
-passport.deserializeUser((userId, done)=>{
-    const user = db_getUserData(userId);
+passport.deserializeUser(async (userId, done)=>{
+    const user = await db_getUserData(userId);
     return done(null, user);
 });
 
