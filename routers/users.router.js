@@ -1,7 +1,7 @@
 const {Router} = require('express');
 const {
     addNewUser,
-    getUserData, 
+    getUserById, 
     getAllUsersData,
     getUserPosts,
 } = require('../controllers/users.controller')
@@ -13,7 +13,7 @@ usersRouter.route('/')
 .post(addNewUser)
 
 usersRouter.route('/:userId')
-.get(getUserData)
+.get(getUserById)
 
 usersRouter.route('/:userId/posts')
 .get(getUserPosts)
