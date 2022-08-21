@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
@@ -9,6 +10,8 @@ const viewsRouter = require('./routers/views.router');
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+app.set('view engine', 'ejs');
+app.use(express.static(path.join(__dirname, '/public')));
 app.use(session({
     name: 'KH-Blog',
     secret: process.env.SESSION_SECRET,
