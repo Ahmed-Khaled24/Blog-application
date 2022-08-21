@@ -14,7 +14,7 @@ function generatePassword(plainTextPassword){
 }
 
 function verifyPassword(plainTextPassword, salt, hashPassword){
-    return hashPassword === generateHash(plainTextPassword, salt);   
+    return hashPassword === hash(plainTextPassword, salt);   
 }
 
 module.exports = {
