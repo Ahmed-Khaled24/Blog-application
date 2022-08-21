@@ -1,12 +1,12 @@
 const crypto = require('crypto');
 
-function hash(plainTextPassword, salt){
+function encrypt(plainTextPassword, salt){
     return hash = crypto.pbkdf2Sync(plainTextPassword, salt, 1000000, 64, 'sha512').toString('hex');
 }
 
 function generatePassword(plainTextPassword){
     const salt = crypto.randomBytes(32).toString('hex');
-    const hashPassword = hash(plainTextPassword, salt);
+    const hashPassword = encrypt(plainTextPassword, salt);
     return{
         hashPassword,
         salt,
@@ -14,7 +14,7 @@ function generatePassword(plainTextPassword){
 }
 
 function verifyPassword(plainTextPassword, salt, hashPassword){
-    return hashPassword === hash(plainTextPassword, salt);   
+    return hashPassword === encrypt(plainTextPassword, salt);   
 }
 
 module.exports = {
