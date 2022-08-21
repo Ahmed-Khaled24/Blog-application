@@ -1,6 +1,6 @@
 const {
     db_addNewUser,
-    db_getUserData,
+    db_getUserById,
     db_getAllUsersData,
     db_getUserPosts
 } = require('../models/users/users.model');
@@ -11,6 +11,7 @@ const {
     generatePassword,
     verifyPassword,
 } = require('../util/password.util');
+
 
 async function addNewUser(req, res){  
     const{isValid, validationMessage} = validateUserInitialData(req.body);
@@ -45,10 +46,11 @@ async function addNewUser(req, res){
     }
 }
 
-async function getUserData(req, res){
+
+async function getUserById(req, res){
     const userId = req.params.userId;
     try{
-        const user = await db_getUserData(userId);
+        const user = await db_getUserById(userId);
         if(user) {
             return res.status(200).json(user);
         } else {
@@ -61,6 +63,7 @@ async function getUserData(req, res){
     }
 }
 
+
 async function getAllUsersData(req, res){
     try{
         const allUsers = await db_getAllUsersData();
@@ -71,6 +74,7 @@ async function getAllUsersData(req, res){
         })
     }
 }
+
 
 async function getUserPosts(req, res){
     const userId = req.params.userId;
@@ -83,9 +87,11 @@ async function getUserPosts(req, res){
         })
     }
 }
+
+
 module.exports = {
     addNewUser, 
-    getUserData,
+    getUserById,
     getAllUsersData,
     getUserPosts,
 }
