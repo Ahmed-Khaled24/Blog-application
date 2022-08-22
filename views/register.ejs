@@ -1,0 +1,17 @@
+<%- include('./partials/header.html'); %>
+<%- include('./partials/only-brand-nav.html') %>
+
+<div class="form_">
+    <h1>Sign up</h1>
+    <form action="/users" method="post">
+        <input type="text" placeholder="email" class="form-control" name="email" autocomplete="off">
+        <input type="test" placeholder="username" class="form-control" name="username"  autocomplete="off">
+        <input type="password" placeholder="password" class="form-control" name="password">
+        <button type="submit" class="btn btn-dark">Sign up</button>
+        <!-- <button type="button" class="btn btn-dark">Sign up with Google</button>
+        <button type="button" class="btn btn-dark">Sign up with Facebook</button> -->
+    </form>
+    <p>Already have an account? <a href="/login"> Login </a></p>
+</div>
+
+<%- include('./partials/footer.html'); %>
