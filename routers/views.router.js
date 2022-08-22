@@ -15,19 +15,19 @@ function checkLoggedIn(req, res, next){
 
 viewsRouter.route('/')
 .get((req, res) => {
-    return res.status(200).send('HOME PAGE')
+    return res.status(200).render('home')
 });
 
 
 viewsRouter.route('/register')
 .get((req, res) => {
-    return res.status(200).send('REGISTER PAGE');
+    return res.status(200).render('register');
 });
 
 
 viewsRouter.route('/login')
 .get((req, res) => {
-    return res.send('LOGIN PAGE');
+    return res.render('login');
 })
 .post(passport.authenticate('local', {
     successRedirect: '/all-posts',
@@ -37,31 +37,31 @@ viewsRouter.route('/login')
 
 viewsRouter.route('/guest')
 .get((req, res) => {
-    return res.status(200).send('GUEST PAGE');
+    return res.status(200).render('guest');
 });
 
 
 viewsRouter.route('/my-posts')
 .get(checkLoggedIn, (req, res) => {
-        return res.status(200).send('MY POSTS PAGE');
+        return res.status(200).render('my-posts');
 });
 
 
 viewsRouter.route('/all-posts')
 .get(checkLoggedIn, (req, res) => {
-        return res.status(200).send('ALL POSTS PAGE');
+        return res.status(200).render('all-posts');
 });
 
  
 viewsRouter.route('/account')
 .get(checkLoggedIn, (req, res) => {
-        return res.status(200).send('ACCOUNT PAGE');
+        return res.status(200).render('account');
 });
 
 
 viewsRouter.route('/compose')
 .get(checkLoggedIn, (req, res) => {
-        return res.status(200).send('COMPOSE PAGE');
+        return res.status(200).render('compose');
 });
 
 
