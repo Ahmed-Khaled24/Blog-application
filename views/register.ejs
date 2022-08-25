@@ -4,8 +4,8 @@
 
     <div class="form_">
         <h1>Sign up</h1>
-        <form action="/users" method="post">
-            <input type="text" placeholder="email" class="form-control" name="email" autocomplete="off">
+        <form action="/register" method="post">
+            <input type="email" placeholder="email" class="form-control" name="email" autocomplete="off">
             <input type="test" placeholder="username" class="form-control" name="username"  autocomplete="off">
             <input type="password" placeholder="password" class="form-control" name="password">
             <button type="submit" class="btn btn-dark">Sign up</button>
@@ -13,6 +13,11 @@
             <button type="button" class="btn btn-dark">Sign up with Facebook</button> -->
         </form>
         <p>Already have an account? <a href="/login"> Login </a></p>
+
+        <% if(notes) { %>
+        <p class="login-register-notes"> <%= notes %></p>
+        <% } %>
+        
     </div>
 </div>
 
