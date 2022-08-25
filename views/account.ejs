@@ -1,0 +1,16 @@
+<%- include('./partials/header.html'); %>
+<div class="app">
+    <%- include('./partials/logged-in-nav.html') %>
+    <div class="account-info">
+        <h1>Account information</h1>
+        <div class="account-info-section">
+            <label for="username">Username: </label>
+            <input class="form-control" type="text" value= <%= username %>  disabled readonly id="username">
+        </div>
+        <div class="account-info-section">
+            <label for="email">Email: </label>
+            <input class="form-control" type="text" value= <%= email %>  disabled readonly id="email">
+        </div>
+    </div>
+</div>
+<%- include('./partials/footer.html'); %>

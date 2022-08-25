@@ -1,0 +1,28 @@
+<%- include('./partials/header.html'); %>
+<div class="app">
+    <%- include('./partials/logged-in-nav.html') %>
+    <div class="container">
+        <p id="my-posts-message"> This is all the posts created by you, if you want to delete any of them use 
+             <span style="color: rgb(207, 1, 1); font-weight: bold;"> &#x2715; </span> sign to the right of the post title.
+            <br>
+             <span style="color: rgb(207, 1, 1)"> WARNING: Deleted posts can not be restored in any way 
+                except you are a friend of the developer.</span> 
+        </p>
+        <% for(const post of posts) {%>
+            <div class= "row post" >           
+                <div class="my-posts-header-div">
+                    <h2 class="post-title"> <%= post.title %> </h2>
+                    <form action="/posts" method="delete">
+                        <input type="text" name="postId" value= <%= post.id %> id="postId"> 
+                        <button type="submit" class="btn btn-danger" id="delete-btn"> &#x2715 </button>
+                    </form>
+                </div>
+                <p class="post-metadata"> posted by: <%= post.createdBy %> </p>
+                <p class="post-metadata"> posted at: <%= post.createdAt %> </p>
+                <p class="post-body"> <%= post.body %>  </p>
+            </div>
+        <% } %>
+    </div>
+</div>
+
+<%- include('./partials/footer.html'); %>

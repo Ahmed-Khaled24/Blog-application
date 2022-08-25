@@ -1,17 +1,17 @@
 <%- include('./partials/header.html'); %>
-<%- include('./partials/only-brand-nav.html') %>
-
-<div class="form_">
-    <h1>Login</h1>
-    <form action="/login" method="post">
-        <input type="text" placeholder="email or username" class="form-control" name="username" autocomplete="off">
-        <input type="password" placeholder="password" class="form-control" name="password">
-        <button type="submit" class="btn btn-dark">Login</button>
-         <!-- <button type="button" class="btn btn-dark">Login with Google</button>
-        <button type="button" class="btn btn-dark">Login with Facebook</button> -->
-        <a class="btn btn-dark" href="/guest" role="button">Login as a guest</a>
-    </form>
-    <p>Don't have an account? <a href="/register"> Sign up </a></p>
+<div class="app">
+    <%- include('./partials/only-brand-nav.html') %>
+    <div class="form_">
+        <h1>Login</h1>
+        <form action="/login" method="post">
+            <input type="text" placeholder="email or username" class="form-control" name="username" autocomplete="off">
+            <input type="password" placeholder="password" class="form-control" name="password">
+            <button type="submit" class="btn btn-dark">Login</button>
+            <!-- <button type="button" class="btn btn-dark">Login with Google</button>
+            <button type="button" class="btn btn-dark">Login with Facebook</button> -->
+            <a class="btn btn-dark" href="/guest" role="button">Login as a guest</a>
+        </form>
+        <p>Don't have an account? <a href="/register"> Sign up </a></p>
+    </div>
 </div>
-
-<%- include('./partials/footer.html'); %>
+ <%- include('./partials/footer.html'); %>
