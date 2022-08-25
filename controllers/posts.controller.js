@@ -2,6 +2,7 @@ const {
     db_addNewPost,
     db_getAllVisiblePosts,
     db_getPost,
+    db_deletePost,
 } = require('../models/posts/posts.model');
 
  const {
@@ -55,8 +56,23 @@ async function getPost(req, res){
     }
 }
 
+async function deletePost(req, res){
+    const postId = req.postId;
+    try {
+        await db_deletePost(postId);
+        return res.status(200).json({
+            status: 'post deleted successfully'
+        }) 
+    } catch(err){
+        return res.status(500).json({
+            error: err.message
+        })
+    }
+}
+
 module.exports = {
     addNewPost, 
     getAllVisiblePosts,
     getPost,
+    deletePost,
 }
