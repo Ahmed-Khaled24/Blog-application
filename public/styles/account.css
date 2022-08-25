@@ -1,0 +1,21 @@
+.account-info{
+    gap: 20px;
+    width: 80%;
+    display: flex;
+    padding: 50px 100px;
+    flex-direction: column;
+}
+
+.account-info-section{
+    gap: 10px;
+    display: flex;
+    padding: 0 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.account-info-section label{
+    min-width: 20%;
+    font-size: 20px;
+    font-weight: 500;
+}

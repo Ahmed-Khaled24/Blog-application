@@ -1,0 +1,30 @@
+.compose {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.compose-section{
+    margin: 15px 0;
+}
+
+.compose form{
+    width: 70%;
+    margin: 40px 0;
+}
+
+.compose-section label{
+    padding: 5px 0;
+    margin: 0;
+}
+
+.compose button{
+    gap: 5px;
+    width: 120px;
+    display: flex;
+    font-size: 20px;
+    margin-top: 15px;
+    padding: 5px 15px;
+    align-items: center;
+    justify-content: center;
+}

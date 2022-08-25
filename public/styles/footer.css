@@ -1,0 +1,43 @@
+.app{
+    min-height: 90vh;
+}
+
+footer{
+    bottom: 0;
+    width: 100%;
+    background-color: #212529;
+    padding: 20px 20px 0px 20px;
+    min-height: 10vh;
+}
+
+
+.footer-text{
+    color: white;
+    margin-bottom: 10px;
+    text-align: justify;
+    font-size: 14px;
+}
+
+
+.footer-link{
+    display: block;
+    margin-bottom: 10px;
+    text-decoration: none;
+    font-size: 14px;
+    color:white;
+}
+.footer-link:hover{
+    color: #E2DCC8;
+}
+
+
+.footer-heading{
+    color: #E2DCC8;
+    font-size: 18px;
+}
+
+
+.left-padding{
+    padding-left:50px;
+}
+

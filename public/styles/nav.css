@@ -1,0 +1,18 @@
+
+.customize-nav{
+    width: 1366px;
+}
+
+
+.nav-item{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+.navbar-brand{
+    padding-left: 15px;
+    padding-right: 15px;
+    font-family: 'Righteous', cursive;
+    font-size: 30px;
+}
