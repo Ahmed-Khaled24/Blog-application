@@ -1,4 +1,5 @@
 function validatePost(post){
+    console.log(post);
     if(!post.title){ // there is no title sent from the user
         return {
             isValid : false,
@@ -20,9 +21,8 @@ function validatePost(post){
             validationMessage : 'Post body is empty'
         }
     }
-
     return {
-        valid : true,
+        isValid : true,
         validationMessage : 'Valid post'
     }
 }
