@@ -3,6 +3,7 @@ const {
     addNewPost, 
     getAllVisiblePosts,
     getPost,
+    deletePost,
 } = require('../controllers/posts.controller');
 
 const postsRouter = Router();
@@ -10,6 +11,7 @@ const postsRouter = Router();
 postsRouter.route('/')
 .get(getAllVisiblePosts)
 .post(addNewPost)
+.delete(deletePost)
 
 
 postsRouter.route('/:postId')

@@ -1,5 +1,19 @@
 const {Router} = require('express');
 const passport = require('passport');
+const request = require('axios');
+const {
+    db_addNewPost,
+    db_getAllVisiblePosts,
+    db_getPost,
+} = require('../models/posts/posts.model');
+const {
+    db_addNewUser,
+    db_getUserById,
+    db_getAllUsersData,
+    db_getUserByUsername,
+    db_getUserPosts,
+} = require('../models/users/users.model');
+
 
 const viewsRouter = Router();
 
@@ -21,13 +35,30 @@ viewsRouter.route('/')
 
 viewsRouter.route('/register')
 .get((req, res) => {
-    return res.status(200).render('register');
-});
+    return res.status(200).render('register', {notes: null});
+})
+.post( async (req, res)=>{
+    try{
+    const response = await request({
+        method: 'post',
+        url: 'http://localhost:3000/users',
+        data: req.body,
+    });
+    console.log(response.data);
+    return res.render('login', {notes: `${response.data.success} login to continue`});
+    } catch(err){   
+        return res.render('register', {notes: err.response.data.error}); 
+    }
+})
 
 
 viewsRouter.route('/login')
 .get((req, res) => {
-    return res.render('login');
+    if(req.isAuthenticated()){
+        return res.redirect('/all-posts');
+    } else{
+        return res.render('login', {notes: null});
+    }
 })
 .post(passport.authenticate('local', {
     successRedirect: '/all-posts',
@@ -36,26 +67,32 @@ viewsRouter.route('/login')
 
 
 viewsRouter.route('/guest')
-.get((req, res) => {
-    return res.status(200).render('guest');
-});
-
-
-viewsRouter.route('/my-posts')
-.get(checkLoggedIn, (req, res) => {
-        return res.status(200).render('my-posts');
+.get( async (req, res) => {
+    const posts = await db_getAllVisiblePosts();
+    return res.status(200).render('guest', {posts: posts});
 });
 
 
 viewsRouter.route('/all-posts')
-.get(checkLoggedIn, (req, res) => {
-        return res.status(200).render('all-posts');
+.get(checkLoggedIn, async (req, res) => {
+    const posts = await db_getAllVisiblePosts();
+    return res.status(200).render('all-posts', {posts: posts});
+});
+
+
+viewsRouter.route('/my-posts')
+.get(checkLoggedIn, async (req, res) => {
+    const userPosts = await db_getUserPosts(req.user.id);
+    return res.status(200).render('my-posts', {posts: userPosts});
 });
 
  
 viewsRouter.route('/account')
 .get(checkLoggedIn, (req, res) => {
-        return res.status(200).render('account');
+        return res.status(200).render('account',{
+            username: req.user.username,
+             email: req.user.email,
+        });
 });
 
 
@@ -66,7 +103,7 @@ viewsRouter.route('/compose')
 
 
 viewsRouter.route('/logout')
-.post(checkLoggedIn, (req, res) => {
+.get(checkLoggedIn, (req, res) => {
     req.logout((err) => {
         if(err)
             return res.status(500).json({error: err.message})   
