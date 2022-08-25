@@ -24,8 +24,17 @@ async function db_getPost(postId){
     }
 }
 
+async function db_deletePost(postId){
+    try{
+        return await Posts.updateOne({id: postId}, {visible: false});
+    } catch(err){
+        throw err;
+    }  
+}
+
 module.exports = {
     db_addNewPost,
     db_getAllVisiblePosts,
     db_getPost,
+    db_deletePost,
 }
