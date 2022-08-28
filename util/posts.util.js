@@ -1,5 +1,4 @@
 function validatePost(post){
-    console.log(post);
     if(!post.title){ // there is no title sent from the user
         return {
             isValid : false,
