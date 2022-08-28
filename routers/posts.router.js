@@ -11,7 +11,10 @@ const postsRouter = Router();
 postsRouter.route('/')
 .get(getAllVisiblePosts)
 .post(addNewPost)
-.delete(deletePost)
+
+
+postsRouter.route('/delete')
+.post(deletePost)
 
 
 postsRouter.route('/:postId')
