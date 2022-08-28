@@ -12,7 +12,8 @@ async function db_getAllVisiblePosts(){
     try {
         return Posts
         .find({visible: true}, {__v: 0})
-        .populate({path: 'createdBy', select: 'username'});   
+        .populate({path: 'createdBy', select: 'username'})
+        .sort({createdAt: 'desc'});   
     } catch(err) {
         throw(err);
     }

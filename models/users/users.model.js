@@ -37,7 +37,8 @@ async function db_getUserPosts(userId){
     try{
         return await Posts
             .find({createdBy: userId, visible: true}, {__v: 0})
-            .populate({path: 'createdBy', select: 'username'});
+            .populate({path: 'createdBy', select: 'username'})
+            .sort({createdAt: 'desc'});
     } catch(err){
         throw(err);
     }
