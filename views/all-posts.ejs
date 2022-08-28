@@ -2,15 +2,15 @@
 <div class="app">
     <%- include('./partials/logged-in-nav.html') %>
     <div class="container">
-        <a id="addNewPost" href="/compose" class="btn btn-dark"> <span class="material-symbols-outlined"> add_circle </span> Add new post</a>
+        <a id="addNewPost" href="/compose" class="btn btn-success"> <span class="material-symbols-outlined"> add_circle </span> Add new post</a>
         <% for(const post of posts) {%>
             <div class= "row post" >
                 <h2 class="post-title"> <%= post.title %> </h2>
-                <p class="post-metadata"> posted by: <%= post.createdBy %> </p>
+                <p class="post-metadata"> posted by: <%= post.createdBy.username %> </p>
                 <p class="post-metadata"> posted at: <%= post.createdAt %> </p>
                 <p class="post-body"> <%= post.body %>  </p>
             </div>
         <% } %>
     </div>
 </div>
-    <%- include('./partials/footer.html'); %>
+<%- include('./partials/footer.html'); %>
