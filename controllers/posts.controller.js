@@ -57,7 +57,7 @@ async function getPost(req, res){
 }
 
 async function deletePost(req, res){
-    const postId = req.postId;
+    const postId = req.body.postId;
     try {
         await db_deletePost(postId);
         return res.status(200).json({
