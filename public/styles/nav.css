@@ -1,18 +1,20 @@
-
 .customize-nav{
     width: 1366px;
 }
 
-
 .nav-item{
-    padding-left: 15px;
-    padding-right: 15px;
+    padding: 0 20px;
+    width: auto;
 }
 
-
 .navbar-brand{
-    padding-left: 15px;
-    padding-right: 15px;
-    font-family: 'Righteous', cursive;
+    margin: 0;
+    width: 30%;
     font-size: 30px;
+    padding: 0 20px;
+    font-family: 'Righteous', cursive;
+}
+
+#navbarNav{
+    flex-direction: row-reverse;
 }

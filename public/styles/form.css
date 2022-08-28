@@ -31,3 +31,9 @@
     font-weight: 500;
     color: #0F3D3E
 }
+
+.login-register-notes{
+    text-align: center;
+    font-size: 16px;
+    color: red;
+}
