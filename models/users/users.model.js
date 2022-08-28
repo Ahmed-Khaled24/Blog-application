@@ -35,7 +35,9 @@ async function db_getAllUsersData(){
 
 async function db_getUserPosts(userId){
     try{
-        return await Posts.find({createdBy: userId}, {__v: 0});
+        return await Posts
+            .find({createdBy: userId, visible: true}, {__v: 0})
+            .populate({path: 'createdBy', select: 'username'});
     } catch(err){
         throw(err);
     }
