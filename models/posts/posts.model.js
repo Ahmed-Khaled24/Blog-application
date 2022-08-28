@@ -10,7 +10,9 @@ async function db_addNewPost(post){
 
 async function db_getAllVisiblePosts(){
     try {
-        return Posts.find({visible: true}, {__v: 0});   
+        return Posts
+        .find({visible: true}, {__v: 0})
+        .populate({path: 'createdBy', select: 'username'});   
     } catch(err) {
         throw(err);
     }
