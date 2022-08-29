@@ -1,6 +1,5 @@
 const { Router } = require('express');
 const {
-    addNewPost, 
     getAllVisiblePosts,
     getPost,
     deletePost,
@@ -10,7 +9,6 @@ const postsRouter = Router();
 
 postsRouter.route('/')
 .get(getAllVisiblePosts)
-.post(addNewPost)
 
 
 postsRouter.route('/delete')
