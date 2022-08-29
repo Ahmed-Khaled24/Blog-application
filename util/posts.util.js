@@ -27,6 +27,18 @@ function validatePost(post){
 }
 
 
+function simplifyDate(postDate){
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const day = postDate.getDate();
+    const month = months[postDate.getMonth()];
+    const year = postDate.getFullYear();
+    const hour = postDate.getHours();
+    const minute = postDate.getMinutes();
+    const second = postDate.getSeconds();
+    return `${hour}:${minute}:${second} -- ${day}, ${month} ${year}`;
+}
+
 module.exports = {
     validatePost,
+    simplifyDate,
 }

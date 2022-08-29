@@ -1,4 +1,5 @@
 const Posts = require('./posts.mongo');
+const {simplifyDate} = require('../../util/posts.util');
 
 async function db_addNewPost(post){
     try {
@@ -10,10 +11,15 @@ async function db_addNewPost(post){
 
 async function db_getAllVisiblePosts(){
     try {
-        return Posts
+        const posts = await Posts
         .find({visible: true}, {__v: 0})
         .populate({path: 'createdBy', select: 'username'})
-        .sort({createdAt: 'desc'});   
+        .sort({createdAt: 'desc'})
+        .lean();   
+        posts.forEach((post) => {
+           post.createdAt = simplifyDate(post.createdAt);
+        });
+        return posts;
     } catch(err) {
         throw(err);
     }
