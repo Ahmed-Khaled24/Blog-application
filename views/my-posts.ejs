@@ -15,7 +15,7 @@
             <div class= "row post" >           
                 <div class="my-posts-header-div">
                     <h2 class="post-title"> <%= post.title %> </h2>
-                    <form action="/posts/delete" method="post">
+                    <form action="/my-posts/delete-post" method="post">
                         <input type="text" name="postId" value= <%= post.id %> id="postId"> 
                         <button type="submit" class="btn btn-danger" id="delete-btn" style="font-family: monospace;">&#10006;</button>
                     </form>
