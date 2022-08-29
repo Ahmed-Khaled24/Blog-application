@@ -1,5 +1,5 @@
 .customize-nav{
-    width: 1366px;
+    width: 90%;
 }
 
 .nav-item{
@@ -10,11 +10,19 @@
 .navbar-brand{
     margin: 0;
     width: 30%;
-    font-size: 30px;
-    padding: 0 20px;
+    font-size: 34px;
+    padding: 0 10px;
     font-family: 'Righteous', cursive;
 }
 
 #navbarNav{
     flex-direction: row-reverse;
+}
+
+@media(max-width: 600px){
+    .navbar-brand {
+        width: auto;
+        font-size: 36px;
+        padding: 0px;
+    }
 }

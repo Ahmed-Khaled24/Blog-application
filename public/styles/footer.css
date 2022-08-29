@@ -21,13 +21,9 @@ footer{
 
 .footer-link{
     display: block;
-    margin-bottom: 10px;
-    text-decoration: none;
     font-size: 14px;
-    color:white;
-}
-.footer-link:hover{
-    color: #E2DCC8;
+    margin-bottom: 5px;
+    text-decoration: none;
 }
 
 
@@ -39,5 +35,11 @@ footer{
 
 .left-padding{
     padding-left:50px;
+}
+
+@media (max-width: 768px){
+    .left-padding{
+        padding: 15px;
+    }
 }
 

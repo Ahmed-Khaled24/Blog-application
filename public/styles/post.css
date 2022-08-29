@@ -1,7 +1,7 @@
 .post{
     margin: 20px 0;
     padding-bottom: 10px;
-    border-bottom: 2px solid #F1F1F1 ;
+    border-bottom: 1px dotted #E2DCC8 ;
 }
 
 .post-title{
@@ -24,7 +24,7 @@
 .post-body{
     margin:0;
     padding:0;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 400;
     text-align: justify;
     font-family: 'Lato', sans-serif;
@@ -42,6 +42,11 @@
     margin: 10px;
     font-size: 14px;
     text-align: center;
+}
+
+.delete-post-form{
+    display: flex;
+    width: 20%;
 }
 
 #guest-warning{
@@ -71,12 +76,13 @@
 }
 
 #my-posts-message{
-    padding: 0;
-    color: rgb(103, 103, 103);
-    margin: 20px 0;
+    margin: 0;
     font-size: 18px;
     font-weight: 500;
-    line-height: 30px;    
+    line-height: 30px;   
+    text-align: center;
+    padding: 10px 20px;
+    color: rgb(103, 103, 103);
 }
 
 #my-posts-div{
@@ -86,4 +92,14 @@
     border-radius: 10px;
     justify-content: center;
     border: 2.5px dashed gray;
+}
+
+@media (max-width: 600px){
+    .container{
+        padding: 0 20px;
+    }
+    .delete-post-form{
+        flex-direction: column;
+        align-items: flex-end;
+    }
 }

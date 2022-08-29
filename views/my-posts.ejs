@@ -10,12 +10,11 @@
                    except you are a friend of the developer.</span> 
            </p>
         </div>
-
         <% for(const post of posts) {%>
             <div class= "row post" >           
                 <div class="my-posts-header-div">
                     <h2 class="post-title"> <%= post.title %> </h2>
-                    <form action="/my-posts/delete-post" method="post">
+                    <form action="/my-posts/delete-post" method="post" class="delete-post-form">
                         <input type="text" name="postId" value= <%= post.id %> id="postId"> 
                         <button type="submit" class="btn btn-danger" id="delete-btn" style="font-family: monospace;">&#10006;</button>
                     </form>
@@ -25,6 +24,7 @@
                 <p class="post-body"> <%= post.body %>  </p>
             </div>
         <% } %>
+
     </div>
 </div>
 
