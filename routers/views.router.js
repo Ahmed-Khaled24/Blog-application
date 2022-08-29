@@ -1,21 +1,17 @@
 const {Router} = require('express');
-const passport = require('passport');
-const request = require('axios');
 const {checkLoggedIn} = require('../util/auth.util');
-const {
-    db_getAllVisiblePosts,
-} = require('../models/posts/posts.model');
-const {
-    db_getUserPosts,
-} = require('../models/users/users.model');
-
+const {db_getAllVisiblePosts,} = require('../models/posts/posts.model');
 
 const viewsRouter = Router();
 
 
 viewsRouter.route('/')
 .get((req, res) => {
-    return res.status(200).render('home')
+    if(req.isAuthenticated()){
+        return res.render('loggedIn-home');
+    } else {
+        return res.render('home');
+    }
 });
 
 
