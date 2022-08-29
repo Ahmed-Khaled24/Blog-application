@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, '/public')));
 app.use(session({
     name: 'KH-Blog',
     secret: process.env.SESSION_SECRET,
-    store: MongoStore.create({ mongoUrl: process.env.MONGO_URL}),
+    store: MongoStore.create({ mongoUrl: process.env.MONGO_ATLAS_URL}),
     saveUninitialized: false,
     resave: false,
     cookie:{
