@@ -37,6 +37,13 @@
     justify-content: space-between;
 }
 
+.compose-err{
+    color: red;
+    margin: 10px;
+    font-size: 14px;
+    text-align: center;
+}
+
 #guest-warning{
     color: red;
     font-size: 18px;

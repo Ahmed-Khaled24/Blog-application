@@ -3,7 +3,7 @@ const {db_addNewPost} = require('../models/posts/posts.model');
 
 
 function renderComposePage(req, res){
-        return res.status(200).render('compose')
+        return res.status(200).render('compose', {notes: null})
  }
 
  
@@ -21,9 +21,7 @@ async function addNewPost (req, res){
             return res.status(500).render('compose')
         }
     } else {
-        return res.status(400).json({
-            error: validationMessage,
-        });
+        return res.status(400).render('compose', {notes: validationMessage});
     }
 }
 
