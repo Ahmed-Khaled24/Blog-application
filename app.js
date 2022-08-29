@@ -6,6 +6,10 @@ const passport = require('./config/passport.config');
 const usersRouter = require('./routers/users.router');
 const postsRouter = require('./routers/posts.router');
 const viewsRouter = require('./routers/views.router');
+const loginRouter = require('./routers/login.router');
+const composeRouter = require('./routers/compose.router');
+const myPostsRouter = require('./routers/my-posts.router');
+const registerRouter = require('./routers/register.router');
 
 const app = express();
 app.use(express.json());
@@ -26,6 +30,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use('/users', usersRouter);
 app.use('/posts', postsRouter);
+app.use('/login', loginRouter);
+app.use('/register', registerRouter);
+app.use('/compose', composeRouter);
+app.use('/my-posts', myPostsRouter);
 app.use('/', viewsRouter);
 
 
