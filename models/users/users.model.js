@@ -44,7 +44,6 @@ async function db_getUserPosts(userId){
         posts.forEach((post)=>{
             post.createdAt = simplifyDate(post.createdAt);
         });
-        console.log(posts);
         return posts;
     } catch(err){
         throw(err);
