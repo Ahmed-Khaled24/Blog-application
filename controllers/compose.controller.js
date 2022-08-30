@@ -13,7 +13,7 @@ async function addNewPost (req, res){
     const { isValid, validationMessage } = validatePost(post);   
     if(isValid){
         post.createdBy = user.id;
-        post.createdAt = Date();
+        post.createdAt = new Date();
         try {
             await db_addNewPost(post);
             return res.status(201).redirect('/all-posts');
