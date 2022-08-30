@@ -1,5 +1,6 @@
 const Users = require('./users.mongo');
 const Posts = require('../posts/posts.mongo');
+const {simplifyDate} = require('../../util/posts.util');
 
 async function db_addNewUser(user){
     try{
@@ -35,10 +36,16 @@ async function db_getAllUsersData(){
 
 async function db_getUserPosts(userId){
     try{
-        return await Posts
+        const posts = await Posts
             .find({createdBy: userId, visible: true}, {__v: 0})
             .populate({path: 'createdBy', select: 'username'})
-            .sort({createdAt: 'desc'});
+            .sort({createdAt: 'desc'})
+            .lean();
+        posts.forEach((post)=>{
+            post.createdAt = simplifyDate(post.createdAt);
+        });
+        console.log(posts);
+        return posts;
     } catch(err){
         throw(err);
     }
