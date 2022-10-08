@@ -1,10 +1,10 @@
 {
   "name": "blog-web-app",
   "version": "1.0.0",
-  "description": "Blog web application",
+  "description": "Blogs web application",
   "main": "server.js",
   "scripts": {
-    "test": "jest ",
+    "test": "jest --detectOpenHandlers",
     "start": "node server.js",
     "watch": "nodemon server.js"
   },
@@ -12,7 +12,7 @@
     "node": "16.16.0"
   },
   "keywords": [],
-  "author": "Ahmed Khaled ",
+  "author": "Ahmed Khaled",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.27.2",
