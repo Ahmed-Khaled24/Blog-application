@@ -1,3 +1,5 @@
+const { checkStrength } = require("./password.util")
+
 function validateUserInitialData(user){
     if(!user.username){ 
         return {
@@ -28,6 +30,11 @@ function validateUserInitialData(user){
         return {
             isValid: false,
             validationMessage: 'password field is empty'
+        }
+    } else if (!checkStrength(user.password)){
+        return {
+            isValid: false,
+            validationMessage: 'weak password, your password must be at least 8 characters containing uppercase, lowercase, and digits'
         }
     } else {
         return {

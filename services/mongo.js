@@ -12,7 +12,7 @@ mongoose.connection
 })
 
 async function connectMongo(){
-    await mongoose.connect(process.env.MONGO_ATLAS_URL);
+    await mongoose.connect(process.env.MONGO_URL);
 }
 
 async function disconnectMongo(){

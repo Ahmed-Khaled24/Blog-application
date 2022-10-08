@@ -4,33 +4,28 @@ const {
     db_getAllUsersData,
     db_getUserPosts
 } = require('../models/users/users.model');
-const {
-    validateUserInitialData,
-} = require('../util/users.util');
-const {
-    generatePassword,
-    verifyPassword,
-} = require('../util/password.util');
+const { validateUserInitialData } = require('../util/users.util');
+const { encryptPassword } = require('../util/password.util');
 
 
 async function addNewUser(req, res){  
-    const{isValid, validationMessage} = validateUserInitialData(req.body);
+    const{ isValid, validationMessage } = validateUserInitialData(req.body);
     if(!isValid){
         return res.status(400).json({
             error: validationMessage,
         })
     }
-    const{hashPassword, salt} = generatePassword(req.body.password);
+
     const user = {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
         username: req.body.username,
         email: req.body.email,
-        password: hashPassword,
-        salt: salt,
-        userSource: 'Local',
+        password: await encryptPassword(req.body.password),
         registerDate: Date(),
-        active: true
     }
-    try{
+
+    try {
         const newUser = await db_addNewUser(user);
         return res.status(201).json({
             success: "user created successfully",
@@ -39,7 +34,7 @@ async function addNewUser(req, res){
                 id: newUser.id
             },
         })
-    } catch(err){
+    } catch(err) {
         return res.status(500).json({
             error: err.message
         })

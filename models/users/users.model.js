@@ -18,9 +18,9 @@ async function db_getUserById(userId){
     }
 }
 
-async function db_getUserByUsername(username){
+async function db_getUserByEmail(email){
     try{
-        return await Users.findOne({username: username});
+        return await Users.findOne({email: email});
     } catch(err) {
         throw(err)
     }
@@ -53,6 +53,6 @@ module.exports = {
     db_addNewUser,
     db_getUserById,
     db_getAllUsersData,
-    db_getUserByUsername,
+    db_getUserByEmail,
     db_getUserPosts,
 }

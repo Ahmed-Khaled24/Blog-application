@@ -28,3 +28,17 @@ section {
     flex-direction: column;
     justify-content: center;
 }
+
+/* Scroll bar */
+::-webkit-scrollbar {
+    width: 15px;
+}
+::-webkit-scrollbar-track {
+    background: #212529;
+}
+::-webkit-scrollbar-thumb {
+    background: #d3d2d2;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #868686;
+}

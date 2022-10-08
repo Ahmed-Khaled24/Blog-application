@@ -1,24 +1,26 @@
-const crypto = require('crypto');
+const bcrypt = require('bcrypt');
 
-function encrypt(plainTextPassword, salt){
-    return hash = crypto.pbkdf2Sync(plainTextPassword, salt, 1000000, 64, 'sha512').toString('hex');
+async function encryptPassword(plainTextPassword) {
+    const encryptedPassword = await bcrypt.hash(plainTextPassword, 12);
+    return encryptedPassword;
 }
 
-function generatePassword(plainTextPassword){
-    const salt = crypto.randomBytes(32).toString('hex');
-    const hashPassword = encrypt(plainTextPassword, salt);
-    return{
-        hashPassword,
-        salt,
-    }
+async function verifyPassword(plainTextPassword, encryptedPassword){
+    const isValid = await bcrypt.compare(plainTextPassword, encryptedPassword);
+    return isValid;
 }
 
-function verifyPassword(plainTextPassword, salt, hashPassword){
-    return hashPassword === encrypt(plainTextPassword, salt);   
+function checkStrength(password) {
+    /*
+        check that user password consists of at least one uppercase, one lowercase, and one digit 
+        8 characters length minimum  
+    */
+    return /^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,50}$/.test(password);
 }
 
 module.exports = {
-    generatePassword,
+    encryptPassword, 
     verifyPassword,
+    checkStrength,
 }
 

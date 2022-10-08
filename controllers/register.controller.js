@@ -1,4 +1,4 @@
-const {generatePassword} = require('../util/password.util');
+const {encryptPassword} = require('../util/password.util');
 const {db_addNewUser} = require('../models/users/users.model');
 const {validateUserInitialData} = require('../util/users.util');
 
@@ -7,19 +7,21 @@ function renderRegisterPage (req, res) {
 }
 
 async function registerNewUser (req, res, next) {
-    const {isValid, validationMessage} = validateUserInitialData(req.body);
+    
+    const{ isValid, validationMessage } = validateUserInitialData(req.body);
     if(!isValid){
-        return res.render('register', {notes: validationMessage});
+        return res.status(400).json({
+            error: validationMessage,
+        })
     }
-    const{hashPassword, salt} = generatePassword(req.body.password);
+
     const user = {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
         username: req.body.username,
         email: req.body.email,
-        password: hashPassword,
-        salt: salt,
-        userSource: 'Local',
+        password: await encryptPassword(req.body.password),
         registerDate: Date(),
-        active: true
     }
     try{
         await db_addNewUser(user);

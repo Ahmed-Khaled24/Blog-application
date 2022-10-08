@@ -9,9 +9,9 @@ const registerRouter = Router();
 
 registerRouter.route('/')
 .get(renderRegisterPage)
-.post(registerNewUser , passport.authenticate('local', 
-    { successRedirect: '/all-posts',
-      failureRedirect: '/login'
+.post( registerNewUser , passport.authenticate('local', { 
+    successRedirect: '/all-posts',
+    failureRedirect: '/login'
 }));
 
 module.exports = registerRouter;
