@@ -1,31 +1,36 @@
-<%- include('./partials/header.html'); %>
-<div class="app">
-    <%- include('./partials/logged-in-nav.html') %>
-    <div class="container">
-        <div id="my-posts-div">
-            <p id="my-posts-message"> This is all the posts created by you, if you want to delete any of them use 
-                <span style="color: rgb(207, 1, 1); font-weight: bold; font-family: monospace;">&#10006;</span> sign to the right of the post title.
-               <br>
-                <span style="color: rgb(207, 1, 1)"> WARNING: Deleted posts can not be restored in any way 
-                   except you are a friend of the developer.</span> 
-           </p>
-        </div>
-        <% for(const post of posts) {%>
-            <div class= "row post" >           
-                <div class="my-posts-header-div">
-                    <h2 class="post-title"> <%= post.title %> </h2>
-                    <form action="/my-posts/delete-post" method="post" class="delete-post-form">
-                        <input type="text" name="postId" value= <%= post._id %> id="postId"> 
-                        <button type="submit" class="btn btn-danger" id="delete-btn" style="font-family: monospace;">&#10006;</button>
-                    </form>
-                </div>
-                <p class="post-metadata"> posted by: <%= post.createdBy.username %> </p>
-                <p class="post-metadata"> posted at: <%= post.createdAt %> </p>
-                <p class="post-body"> <%= post.body %>  </p>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">    
+        <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+        <link rel="icon" href="img/icon.png">
+        <link href="styles/globals.css" rel="stylesheet">
+        <link href="styles/footer.css" rel="stylesheet">
+        <link href="styles/post.css" rel="stylesheet">
+        <link href="styles/nav.css" rel="stylesheet">
+        <title>Blogs</title>
+    </head>
+    <body>   
+        <div class="app">
+            <%- include('./partials/logged-in-nav.html') %>
+            <div class="container">
+                <% for(const post of posts) {%>
+                    <div class= "row post" >           
+                        <div class="my-posts-header-div">
+                            <h2 class="post-title"> <%= post.title %> </h2>
+                            <form action="/my-posts/delete-post" method="post" class="delete-post-form">
+                                <input type="text" name="postId" value= <%= post._id %> id="postId"> 
+                                <button type="submit" class="btn btn-danger" id="delete-btn" style="font-family: monospace;">&#10006;</button>
+                            </form>
+                        </div>
+                        <p class="post-metadata"> posted by: <%= post.createdBy.username %> </p>
+                        <p class="post-metadata"> posted at: <%= post.createdAt %> </p>
+                        <p class="post-body"> <%= post.body %>  </p>
+                    </div>
+                <% } %>
             </div>
-        <% } %>
-
-    </div>
-</div>
-
-<%- include('./partials/footer.html'); %>
+        </div>
+    <%- include('./partials/footer.html'); %>

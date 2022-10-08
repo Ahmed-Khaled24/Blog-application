@@ -8,17 +8,10 @@ const viewsRouter = Router();
 viewsRouter.route('/')
 .get((req, res) => {
     if(req.isAuthenticated()){
-        return res.render('loggedIn-home');
+        return res.redirect('all-posts');
     } else {
         return res.render('home');
     }
-});
-
-
-viewsRouter.route('/guest')
-.get( async (req, res) => {
-    const posts = await db_getAllVisiblePosts();
-    return res.status(200).render('guest', {posts: posts});
 });
 
 

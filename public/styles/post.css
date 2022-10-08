@@ -49,11 +49,6 @@
     width: 20%;
 }
 
-#guest-warning{
-    color: red;
-    font-size: 18px;
-    margin:20px 0 20px 0;
-}
 
 #addNewPost{
     position: fixed;
@@ -75,25 +70,6 @@
 #delete-btn{
     padding: 5px 10px;
     font-weight: bolder;
-}
-
-#my-posts-message{
-    margin: 0;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 30px;   
-    text-align: center;
-    padding: 10px 20px;
-    color: rgb(103, 103, 103);
-}
-
-#my-posts-div{
-    padding: 0;
-    display: flex;
-    margin: 20px 0;
-    border-radius: 10px;
-    justify-content: center;
-    border: 2.5px dashed gray;
 }
 
 @media (max-width: 600px){
