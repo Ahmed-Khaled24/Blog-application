@@ -3,9 +3,10 @@ const mongoose = require('mongoose');
 const userSchema = new mongoose.Schema({
     firstName: String,
     lastName: String,
+    password: String,
+    imageUrl: String,
     username: {
         type: String,
-        required: true,
         unique: true,
     },
     email: {
@@ -14,10 +15,6 @@ const userSchema = new mongoose.Schema({
         unique: true,
         index: true,
     },
-    password: {
-        type: String,
-        required: true,
-    },
     registerDate: {
         type: Date,
         required: true,
@@ -25,7 +22,7 @@ const userSchema = new mongoose.Schema({
     active: {
         type: Boolean,
         default: true,
-    }
+    },
 });
 
 const Users = mongoose.model('User', userSchema);

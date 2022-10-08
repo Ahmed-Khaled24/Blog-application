@@ -9,6 +9,7 @@ const viewsRouter = require('./routers/views.router');
 const loginRouter = require('./routers/login.router');
 const composeRouter = require('./routers/compose.router');
 const myPostsRouter = require('./routers/my-posts.router');
+const googleRouter = require('./routers/googleAuth.router');
 const registerRouter = require('./routers/register.router');
 
 const app = express();
@@ -19,7 +20,7 @@ app.use(express.static(path.join(__dirname, '/public')));
 app.use(session({
     name: 'KH-Blog',
     secret: process.env.SESSION_SECRET,
-    store: MongoStore.create({ mongoUrl: process.env.MONGO_ATLAS_URL}),
+    store: MongoStore.create({ mongoUrl: process.env.MONGO_URL}),
     saveUninitialized: false,
     resave: false,
     cookie:{
@@ -34,6 +35,7 @@ app.use('/login', loginRouter);
 app.use('/register', registerRouter);
 app.use('/compose', composeRouter);
 app.use('/my-posts', myPostsRouter);
+app.use('/auth', googleRouter);
 app.use('/', viewsRouter);
 
 

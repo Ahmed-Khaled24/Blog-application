@@ -1,9 +1,11 @@
 const passport = require('passport');
 const localStrategy = require('passport-local');
+const googleStrategy = require('passport-google-oauth20');
 const { verifyPassword } = require('../util/password.util');
 const {
     db_getUserByEmail,
     db_getUserById,
+    db_addNewUser,
 } = require('../models/users/users.model');
 
 
@@ -31,9 +33,36 @@ async function localVerify(email, password, done){
         return done(err);
     }
 }
-
 passport.use('local', new localStrategy({
     usernameField: 'email',
 }, localVerify));
+
+
+async function googleVerify(accessToken, refreshToken, profile, done) {
+    const profileData = profile._json;
+    let user = await db_getUserByEmail(profileData.email);
+    if(user) {
+        return done(null, user)
+    }
+
+    user = {    
+        firstName: profileData.given_name,
+        lastName: profileData.family_name,
+        email: profileData.email,
+        imageUrl: profileData.picture,
+        registerDate: new Date(),
+    }
+    
+    const newUser = await db_addNewUser(user);
+    done(null, newUser);
+}
+
+passport.use(new googleStrategy({
+        clientID: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        callbackURL: '/auth/google/callback',
+    }, googleVerify)
+);
+
 
 module.exports = passport
