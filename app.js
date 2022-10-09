@@ -1,8 +1,11 @@
+require('./services/passport');
+
 const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
-const passport = require('./config/passport.config');
+const passport = require('passport');
+
 const usersRouter = require('./routers/users.router');
 const postsRouter = require('./routers/posts.router');
 const viewsRouter = require('./routers/views.router');

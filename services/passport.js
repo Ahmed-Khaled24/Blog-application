@@ -62,6 +62,3 @@ passport.use(new googleStrategy({
         callbackURL: '/auth/google/callback',
     }, googleVerify)
 );
-
-
-module.exports = passport

@@ -4,7 +4,6 @@ const {db_getAllVisiblePosts,} = require('../models/posts/posts.model');
 
 const viewsRouter = Router();
 
-
 viewsRouter.route('/')
 .get((req, res) => {
     if(req.isAuthenticated()){
@@ -14,13 +13,11 @@ viewsRouter.route('/')
     }
 });
 
-
 viewsRouter.route('/all-posts')
 .get(checkLoggedIn, async (req, res) => {
     const posts = await db_getAllVisiblePosts();
     return res.status(200).render('all-posts', {posts: posts});
 });
-
 
 viewsRouter.route('/account')
 .get(checkLoggedIn, (req, res) => {
@@ -35,7 +32,6 @@ viewsRouter.route('/logout')
     });
     return res.status(302).redirect('/');
 })
-
 
 viewsRouter.route('/*')
 .get((req, res) => {
