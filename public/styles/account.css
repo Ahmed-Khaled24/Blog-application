@@ -1,38 +1,40 @@
+h1{
+    margin: 30px
+}
+
+img {
+    width: 300px;
+    margin-bottom: 10px;
+}
+
 .account-info{
     gap: 20px;
     width: 100%;
     display: flex;
-    padding: 50px 100px;
-    flex-direction: column;
+    justify-content: space-around;
 }
 
-.account-info-section{
-    gap: 10px;
+.account-section {
     display: flex;
-    padding: 0 20px;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
+    width: 40%;
 }
 
-.account-info-section label{
-    min-width: 20%;
-    font-size: 20px;
-    font-weight: 500;
+.text-section{
+    align-items: left;
+}
+
+.visual-section{
+    align-items: center;
+}
+
+.text-section {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 @media (max-width: 1000px){
-    .account-info{
-        margin: 0;
-        padding: 20px;
-    }
     
-    .account-info-section{
-        flex-direction: column;   
-        padding: 0 10px;
-    }
-    
-    .account-info-section label{
-        display: block;
-        width: 100%;
-    }
 }

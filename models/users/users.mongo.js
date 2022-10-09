@@ -4,7 +4,10 @@ const userSchema = new mongoose.Schema({
     firstName: String,
     lastName: String,
     password: String,
-    imageUrl: String,
+    imageUrl: {
+        type: String,
+        default: '/img/default.png'    
+    },
     username: {
         type: String,
         unique: true,

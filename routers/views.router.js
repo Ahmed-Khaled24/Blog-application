@@ -24,12 +24,8 @@ viewsRouter.route('/all-posts')
 
 viewsRouter.route('/account')
 .get(checkLoggedIn, (req, res) => {
-        return res.status(200).render('account',{
-            username: req.user.username,
-             email: req.user.email,
-        });
+        return res.status(200).render('account',{user: req.user });
 });
-
 
 viewsRouter.route('/logout')
 .get(checkLoggedIn, (req, res) => {

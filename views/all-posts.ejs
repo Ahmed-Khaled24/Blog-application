@@ -15,13 +15,18 @@
     <body>
         <div class="app">
             <%- include('./partials/logged-in-nav.html') %>
-            <div class="container">
+            <div class="all-posts">
                 <a id="addNewPost" href="/compose" class="btn btn-success"> + </a>
                 <% for(const post of posts) { %>
-                    <div class= "row post" >
+                    <div class= "post" >
                         <h2 class="post-title"> <%= post.title %> </h2>
                         <p class="post-metadata"> posted by: <%= post.createdBy.username %> </p>
                         <p class="post-metadata"> posted at: <%= post.createdAt %> </p>
+                        <% if(post.imageUrl) { %> 
+                            <div class="image-container"> 
+                                <img src=<%= 'https://blogs-website-bucket.s3.eu-west-3.amazonaws.com/'+post.imageUrl %>  alt="postImage">
+                            </div>
+                        <% } %> 
                         <p class="post-body"> <%= post.body %>  </p>
                     </div>
                 <% } %>

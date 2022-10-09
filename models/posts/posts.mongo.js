@@ -21,7 +21,8 @@ const postSchema = new mongoose.Schema({
     visible:{
         type: Boolean,
         default: true,
-    }
+    },
+    imageUrl: String,
 });
 
 const Posts = mongoose.model('Post', postSchema);

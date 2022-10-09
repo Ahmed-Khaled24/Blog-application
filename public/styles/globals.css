@@ -2,6 +2,11 @@
     min-height: 90vh;
 }
 
+img {
+    padding: 0px;
+    width: 400px;
+}
+
 footer{
     min-height: 10vh;
     display: flex;

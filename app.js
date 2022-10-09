@@ -10,6 +10,7 @@ const loginRouter = require('./routers/login.router');
 const composeRouter = require('./routers/compose.router');
 const myPostsRouter = require('./routers/my-posts.router');
 const googleRouter = require('./routers/googleAuth.router');
+const uploadRouter = require('./routers/upload.router');
 const registerRouter = require('./routers/register.router');
 
 const app = express();
@@ -36,6 +37,7 @@ app.use('/register', registerRouter);
 app.use('/compose', composeRouter);
 app.use('/my-posts', myPostsRouter);
 app.use('/auth', googleRouter);
+app.use('/', uploadRouter);
 app.use('/', viewsRouter);
 
 

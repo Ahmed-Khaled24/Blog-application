@@ -49,7 +49,6 @@ async function googleVerify(accessToken, refreshToken, profile, done) {
         firstName: profileData.given_name,
         lastName: profileData.family_name,
         email: profileData.email,
-        imageUrl: profileData.picture,
         registerDate: new Date(),
     }
     

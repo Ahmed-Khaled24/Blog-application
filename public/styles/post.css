@@ -1,7 +1,16 @@
+.all-posts {
+    display: flex;
+    flex-direction: column;
+    padding: 0 30px;
+    align-items: center;
+}
+
 .post{
-    margin: 20px 0;
-    padding-bottom: 10px;
-    border-bottom: 1px dotted #E2DCC8 ;
+    width: 600px;
+    margin: 20px;
+    padding: 20px;
+    background-color: rgb(252, 252, 252);
+    border-radius: 15px;
 }
 
 .post-title{
@@ -12,7 +21,6 @@
     font-family: 'Lato', sans-serif;
 }
 
-
 .post-metadata{
     margin:0;
     padding:0;
@@ -20,7 +28,11 @@
     font-weight: 400;
     font-family: 'Lato', sans-serif;
 }
-
+.image-container{
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
 .post-body{
     margin:0;
     padding:0;

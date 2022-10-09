@@ -16,15 +16,18 @@
 <body>
 <div class="app">
     <%- include('./partials/logged-in-nav.html') %>
+    <h1>Account information</h1>
     <div class="account-info">
-        <h1>Account information</h1>
-        <div class="account-info-section">
+        <div class="account-section text-section" >            
             <label for="username">Username: </label>
-            <input class="form-control" type="text" value= <%= username %>  disabled readonly id="username">
-        </div>
-        <div class="account-info-section">
+            <input class="form-control" type="text" value= <%= user.username %>  disabled readonly id="username">
             <label for="email">Email: </label>
-            <input class="form-control" type="text" value= <%= email %>  disabled readonly id="email">
+            <input class="form-control" type="text" value= <%= user.email %>  disabled readonly id="email">     
+        </div>
+        <div class="account-section visual-section">
+            <img src=<%= user.imageUrl %> alt="userProfile">
+            <input type="file" accept="image/*" >
+            <button class="btn btn-success"> Save </button>
         </div>
     </div>
 </div>
