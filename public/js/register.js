@@ -35,14 +35,13 @@ singUp_form.addEventListener('submit', async (event) => {
                 }, 
                 body: JSON.stringify({ email, password }),
             })
-            login_response = await login_response.json();
-
-            if( login_response.status === 'authenticated' ) {
-                window.location.href = '/all-posts';
+            
+            login_response = await login_response.text();
+            if(login_response === 'Authorized') {
+                window.location.href = '/all-posts'
             } else {
                 throw new Error(login_response.message)
-            }
-            
+            }         
         } else {
             throw new Error(signUp_response.message)
         }

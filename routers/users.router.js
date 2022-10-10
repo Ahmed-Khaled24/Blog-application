@@ -12,10 +12,10 @@ const usersRouter = Router();
 usersRouter.route('/')
 .get(getAllUsersData)
 .post(addNewUser)
+.patch(updateUser)
 
 usersRouter.route('/:userId')
 .get(getUserById)
-.patch(updateUser)
 
 usersRouter.route('/:userId/posts')
 .get(getUserPosts)

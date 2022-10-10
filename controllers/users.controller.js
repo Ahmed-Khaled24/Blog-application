@@ -95,7 +95,7 @@ async function getUserPosts(req, res){
 
 async function updateUser(req, res) {
     const update = req.body.update  // update object {property: newValue}
-    const filter = {_id: req.params.userId};
+    const filter = { _id: req.user.id };
     try {
         await db_updateUser(filter, update); 
         return res.status(200).json({
