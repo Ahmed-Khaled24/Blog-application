@@ -30,6 +30,8 @@ uploadBtn.addEventListener('click', async () => {
             },
             body: photo,
         });
+
+        window.location.reload();
     } catch(err) {
         console.log(err.message);
     }
