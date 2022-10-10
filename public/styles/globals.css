@@ -2,6 +2,20 @@
     min-height: 90vh;
 }
 
+.error-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.error-paragraph{
+    color: red;
+    text-align: center;
+    width: 400px;
+}
+
 img {
     padding: 0px;
     width: 400px;

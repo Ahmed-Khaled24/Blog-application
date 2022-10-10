@@ -28,6 +28,12 @@ async () => {
         title, body, imageUrl
     }
     
+    const validationMessage = validatePost(post);
+    if(validationMessage !== 'valid'){
+        addErrorElement(validationMessage);
+        return;
+    }
+
     try { 
         let response = await fetch('/posts', {
             method: 'post',
@@ -44,6 +50,6 @@ async () => {
             throw new Error(response.message);
             
     } catch(err) {
-        console.log(err.message);
+        addErrorElement(err.message);
     }
 })

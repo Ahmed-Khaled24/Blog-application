@@ -21,10 +21,10 @@ login_form.addEventListener('submit', async (event) => {
             window.location.href = '/all-posts'
         } else {
             login_btn.disable = 'false';
-            throw new Error('Invalid Email or Password');
+            throw new Error('invalid email or password');
         }
     } catch(err) {
-        console.log(err.message);
+        addErrorElement(err.message);
     }
 })
 

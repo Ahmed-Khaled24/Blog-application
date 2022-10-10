@@ -9,10 +9,14 @@ singUp_form.addEventListener('submit', async (event) => {
     const password = document.querySelector('input[name="password"]').value;
     const confirmPassword = document.querySelector('input[name="confirmPassword"]').value;
 
-    //  TODO: Validate inputs
-
     const user = {
         firstName, lastName, email, password
+    }
+
+    const validationMessage= validateUser({...user, confirmPassword});
+    if(validationMessage !== 'valid'){
+        addErrorElement(validationMessage);
+        return;
     }
 
     try {
@@ -47,7 +51,6 @@ singUp_form.addEventListener('submit', async (event) => {
         }
 
     } catch(err) {
-        console.log(err.message);
+        addErrorElement(err.message);
     }
-
 })

@@ -14,7 +14,7 @@ function validateUserInitialData(user){
     } else if(user.email.trim().length === 0){
         return {
             isValid: false,
-            validationMessage: 'email field is missing'
+            validationMessage: 'email field is empty'
         }
     } else if(user.password.trim().length === 0){
         return {
@@ -26,6 +26,26 @@ function validateUserInitialData(user){
             isValid: false,
             validationMessage: 'weak password, your password must be at least 8 characters containing uppercase, lowercase, and digits'
         }
+    } else if(user.firstName.trim().length === 0){
+        return {
+            isValid: false,
+            validationMessage: 'first name field is empty'
+        }
+    } else if(user.lastName.trim().length === 0){
+        return {
+            isValid: false,
+            validationMessage: 'last name field is empty'
+        }
+    } else if(!user.firstName){
+        return {
+            isValid: false,
+            validationMessage: 'first name field is missing'
+        }
+    } else if(!user.lastName){
+        return {
+            isValid: false,
+            validationMessage: 'last name field is missing'
+        }
     } else {
         return {
             isValid: true,
@@ -33,10 +53,6 @@ function validateUserInitialData(user){
         }
     }
 }
-
-
-
-
 
 module.exports = {
     validateUserInitialData,
