@@ -49,10 +49,20 @@ async function db_getUserPosts(userId){
         throw(err);
     }
 }
+
+async function db_updateUser(filter, update){
+    try {
+        await Users.updateOne(filter, update);
+    } catch(err) {
+        throw err;
+    }
+}
+
 module.exports = {
     db_addNewUser,
     db_getUserById,
     db_getAllUsersData,
     db_getUserByEmail,
     db_getUserPosts,
+    db_updateUser,
 }
