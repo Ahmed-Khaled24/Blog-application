@@ -1,6 +1,7 @@
 const {Router} = require('express');
 const {checkLoggedIn} = require('../util/auth.util');
 const {db_getAllVisiblePosts} = require('../models/posts/posts.model');
+const {db_getUserPosts} = require('../models/users/users.model');
 
 
 const viewsRouter = Router();
@@ -18,8 +19,9 @@ viewsRouter.get('/',
 
 
 viewsRouter.get('/my-posts', checkLoggedIn, 
-    (req, res) => {
-        res.render('my-posts');
+    async (req, res) => {
+        const posts = await db_getUserPosts(req.user.id);
+        res.render('my-posts', {posts: posts});
     }
 );
 

@@ -10,7 +10,6 @@
         <link rel="icon" href="img/icon.png">
         <link href="styles/compose.css" rel="stylesheet">
         <link href="styles/globals.css" rel="stylesheet">
-        <link href="styles/footer.css" rel="stylesheet">
         <link href="styles/nav.css" rel="stylesheet">
         <title>Blogs</title>
     </head>
@@ -20,9 +19,6 @@
 
         <div class="compose">
             <form action="/compose" method="post">
-                <% if(notes){ %> 
-                    <p class="compose-err"> <%= notes %> </p>
-                <% } %> 
                 <div class="compose-section">
                     <label for="title" class="form-label">Post title:</label>
                     <input type="text" class="form-control" id="title" name="title" required="true"> 

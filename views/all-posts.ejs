@@ -20,8 +20,15 @@
                 <% for(const post of posts) { %>
                     <div class= "post" >
                         <h2 class="post-title"> <%= post.title %> </h2>
-                        <p class="post-metadata"> posted by: <%= post.createdBy.username %> </p>
-                        <p class="post-metadata"> posted at: <%= post.createdAt %> </p>
+                        <div class="metadata-container">
+                            <div class="visual-data">
+                                <img src=<%= post.createdBy.imageUrl %>  alt="userProfile">
+                            </div>
+                            <div class="text-data">
+                                <p class="post-metadata"> <%= post.createdBy.firstName +' '+ post.createdBy.lastName %> </p>
+                                <p class="post-metadata"> <%= post.createdAt %> </p>
+                            </div>
+                        </div>
                         <% if(post.imageUrl) { %> 
                             <div class="image-container"> 
                                 <img src=<%= 'https://blogs-website-bucket.s3.eu-west-3.amazonaws.com/'+post.imageUrl %>  alt="postImage">

@@ -22,9 +22,7 @@ authRouter.get('/google/callback',
 authRouter.post('/local', 
     passport.authenticate('local'),
     (req, res) => {
-        res.status(200).json({
-            status: 'authenticated'
-        })
+        res.status(200).send('Authorized')
     }
 )
 

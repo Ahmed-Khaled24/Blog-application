@@ -13,7 +13,7 @@ async function db_getAllVisiblePosts(){
     try {
         const posts = await Posts
         .find({visible: true}, {__v: 0})
-        .populate({path: 'createdBy', select: 'username'})
+        .populate({path: 'createdBy', select: 'firstName lastName imageUrl'})
         .sort({createdAt: 'desc'})
         .lean();   
         posts.forEach((post) => {

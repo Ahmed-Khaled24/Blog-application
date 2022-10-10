@@ -8,7 +8,6 @@
         <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
         <link rel="icon" href="img/icon.png">
         <link href="styles/globals.css" rel="stylesheet">
-        <link href="styles/footer.css" rel="stylesheet">
         <link href="styles/form.css" rel="stylesheet">
         <link href="styles/nav.css" rel="stylesheet">
         <title>Blogs</title>
@@ -17,22 +16,18 @@
         <div class="app">
             <%- include('./partials/guest-nav.html') %>
             <div class="form_">
-                <h1>Sign up</h1>
-                <form action="/register" method="post">
+                <h1> Sign up </h1>
+                <form>
                     <input type="text" placeholder="First Name" class="form-control" name="firstName"  autocomplete="off" required="true">
                     <input type="text" placeholder="Last Name" class="form-control" name="lastName"  autocomplete="off" required="true">
-                    <input type="text" placeholder="Username" class="form-control" name="username"  autocomplete="off" required="true">
-                    <input type="email" placeholder="Email" class="form-control" name="email" autocomplete="off" required="true">
+                    <input type="email" placeholder="Email" class="form-control" name="email" required="true">
                     <input type="password" placeholder="Password" class="form-control" name="password" required="true">
                     <input type="password" placeholder="Confirm Password" class="form-control" name="confirmPassword" required="true">
-                    <button type="submit" class="btn btn-dark">Sign up</button>
-                    <a href="/auth/google" class="btn btn-dark"> Continue With Google</a>
+                    <button type="submit" class="btn btn-dark" id="signup-btn"> Sign up </button>
+                    <a href="/auth/google" class="btn btn-dark" id="google-btn"> Continue With Google</a>
                 </form>
                 <p>Already have an account? <a href="/login"> Login </a> </p>
-
-                <% if(notes) { %>
-                <p class="login-register-notes"> <%= notes %></p>
-                <% } %>
             </div>
         </div>
+        <script src="/js/register.js"></script>
     <%- include('./partials/footer.html'); %>

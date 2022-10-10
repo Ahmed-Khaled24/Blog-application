@@ -29,14 +29,20 @@ async () => {
     }
     
     try { 
-        await fetch('/compose', {
+        let response = await fetch('/posts', {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(post),
         });
-        window.location.href = '/all-posts';
+        response = await response.json();
+
+        if(response.status === 'success')
+            window.location.href = '/all-posts';
+        else 
+            throw new Error(response.message);
+            
     } catch(err) {
         console.log(err.message);
     }

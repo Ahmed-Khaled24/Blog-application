@@ -8,7 +8,6 @@
         <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
         <link rel="icon" href="img/icon.png">
         <link href="styles/globals.css" rel="stylesheet">
-        <link href="styles/footer.css" rel="stylesheet">
         <link href="styles/post.css" rel="stylesheet">
         <link href="styles/nav.css" rel="stylesheet">
         <title>Blogs</title>
@@ -16,21 +15,31 @@
     <body>   
         <div class="app">
             <%- include('./partials/logged-in-nav.html') %>
-            <div class="container">
+            <div class="all-posts">
                 <% for(const post of posts) {%>
-                    <div class= "row post" >           
+                    <div class= "post" >           
                         <div class="my-posts-header-div">
-                            <h2 class="post-title"> <%= post.title %> </h2>
-                            <form action="/my-posts/delete-post" method="post" class="delete-post-form">
-                                <input type="text" name="postId" value= <%= post._id %> id="postId"> 
-                                <button type="submit" class="btn btn-danger" id="delete-btn" style="font-family: monospace;">&#10006;</button>
-                            </form>
+                            <h2 class="post-title"> <%= post.title %> </h2> 
+                            <button type="button" class="btn btn-danger delete-btn"  value= <%= post._id %>> &#10006; </button>  
                         </div>
-                        <p class="post-metadata"> posted by: <%= post.createdBy.username %> </p>
-                        <p class="post-metadata"> posted at: <%= post.createdAt %> </p>
+                        <div class="metadata-container">
+                            <div class="visual-data">
+                                <img src=<%= post.createdBy.imageUrl %>  alt="">
+                            </div>
+                            <div class="text-data">
+                                <p class="post-metadata"> <%= post.createdBy.firstName +' '+ post.createdBy.lastName %> </p>
+                                <p class="post-metadata"> <%= post.createdAt %> </p>
+                            </div>
+                        </div>
+                        <% if(post.imageUrl) { %> 
+                            <div class="image-container"> 
+                                <img src=<%= 'https://blogs-website-bucket.s3.eu-west-3.amazonaws.com/'+post.imageUrl %>  alt="postImage">
+                            </div>
+                        <% } %> 
                         <p class="post-body"> <%= post.body %>  </p>
                     </div>
                 <% } %>
             </div>
         </div>
+        <script src="/js/deletePost.js"></script>
     <%- include('./partials/footer.html'); %>

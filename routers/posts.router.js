@@ -11,12 +11,12 @@ const postsRouter = Router();
 
 postsRouter.route('/')
 .get(getAllVisiblePosts)
-.post(checkLoggedIn, addNewPost);
-
+.post(checkLoggedIn, addNewPost)
+.delete(checkLoggedIn, deletePost)
 
 postsRouter.route('/:postId')
 .get(getPost)
-.delete(checkLoggedIn, deletePost)
+
 
 
 module.exports = postsRouter;

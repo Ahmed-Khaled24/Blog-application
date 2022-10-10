@@ -24,7 +24,7 @@ async function localVerify(email, password, done){
         if(!user){
             return done(null, false);
         }
-        if(verifyPassword(password, user.password)){
+        if(await verifyPassword(password, user.password)){
             return done(null, user);
         } else {
             return done(null, false);
@@ -33,6 +33,7 @@ async function localVerify(email, password, done){
         return done(err);
     }
 }
+
 passport.use('local', new localStrategy({
     usernameField: 'email',
 }, localVerify));

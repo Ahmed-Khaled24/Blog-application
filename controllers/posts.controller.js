@@ -2,6 +2,7 @@ const {
     db_getAllVisiblePosts,
     db_getPost,
     db_deletePost,
+    db_addNewPost
 } = require('../models/posts/posts.model');
 
  const { validatePost } = require('../util/posts.util');
@@ -15,12 +16,20 @@ const {
         post.createdAt = new Date();
         try {
             await db_addNewPost(post);
-            return res.status(201).redirect('/all-posts');
+            return res.status(201).json({
+                status: 'success',
+            });
         } catch(err){
-            return res.status(500).render('compose')
+            return res.status(500).json({
+                status: 'fail',
+                message: err.message
+            })
         }
     } else {
-        return res.status(400).render('compose', {notes: validationMessage});
+        return res.status(400).json({
+            status: 'fail',
+            message: validationMessage,
+        });
     }
 }
 
@@ -39,7 +48,7 @@ async function getPost(req, res){
     const userId = req.params.postId;
     try{
         const post = await db_getPost(postId);
-        return res.status(200).json(post);
+        return res.status(200).json({post});
     } catch(err){
         return res.status(500).json({
             error: err.message,
@@ -52,11 +61,12 @@ async function deletePost(req, res){
     try {
         await db_deletePost(postId);
         return res.status(200).json({
-            status: 'post deleted successfully'
+            status: 'success'
         }) 
     } catch(err){
         return res.status(500).json({
-            error: err.message
+            status: 'fail',
+            message: err.message
         })
     }
 }

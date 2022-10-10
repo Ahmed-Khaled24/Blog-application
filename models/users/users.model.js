@@ -38,7 +38,7 @@ async function db_getUserPosts(userId){
     try{
         const posts = await Posts
             .find({createdBy: userId, visible: true}, {__v: 0})
-            .populate({path: 'createdBy', select: 'username'})
+            .populate({path: 'createdBy', select: 'firstName lastName imageUrl'})
             .sort({createdAt: 'desc'})
             .lean();
         posts.forEach((post)=>{
