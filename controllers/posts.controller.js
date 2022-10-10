@@ -4,10 +4,25 @@ const {
     db_deletePost,
 } = require('../models/posts/posts.model');
 
- const {
-    validatePost,
- } = require('../util/posts.util');
+ const { validatePost } = require('../util/posts.util');
 
+ async function addNewPost (req, res){
+    const post  = req.body;
+    const user = req.user;
+    const { isValid, validationMessage } = validatePost(post);   
+    if(isValid){
+        post.createdBy = user.id;
+        post.createdAt = new Date();
+        try {
+            await db_addNewPost(post);
+            return res.status(201).redirect('/all-posts');
+        } catch(err){
+            return res.status(500).render('compose')
+        }
+    } else {
+        return res.status(400).render('compose', {notes: validationMessage});
+    }
+}
 
 async function getAllVisiblePosts(req, res){
     try{
@@ -47,6 +62,7 @@ async function deletePost(req, res){
 }
 
 module.exports = {
+    addNewPost,
     getAllVisiblePosts,
     getPost,
     deletePost,

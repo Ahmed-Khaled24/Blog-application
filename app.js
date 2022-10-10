@@ -9,12 +9,8 @@ const passport = require('passport');
 const usersRouter = require('./routers/users.router');
 const postsRouter = require('./routers/posts.router');
 const viewsRouter = require('./routers/views.router');
-const loginRouter = require('./routers/login.router');
-const composeRouter = require('./routers/compose.router');
-const myPostsRouter = require('./routers/my-posts.router');
-const googleRouter = require('./routers/googleAuth.router');
+const authRouter = require('./routers/auth.router');
 const uploadRouter = require('./routers/upload.router');
-const registerRouter = require('./routers/register.router');
 
 const app = express();
 app.use(express.json());
@@ -22,7 +18,7 @@ app.use(express.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(session({
-    name: 'KH-Blog',
+    name: 'KH-Blogs',
     secret: process.env.SESSION_SECRET,
     store: MongoStore.create({ mongoUrl: process.env.MONGO_URL}),
     saveUninitialized: false,
@@ -35,12 +31,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use('/users', usersRouter);
 app.use('/posts', postsRouter);
-app.use('/login', loginRouter);
-app.use('/register', registerRouter);
-app.use('/compose', composeRouter);
-app.use('/my-posts', myPostsRouter);
-app.use('/auth', googleRouter);
-app.use('/', uploadRouter);
+app.use('/auth', authRouter);
+app.use('/upload', uploadRouter);
 app.use('/', viewsRouter);
 
 

@@ -4,6 +4,7 @@ const {
     getUserById, 
     getAllUsersData,
     getUserPosts,
+    updateUser,
 } = require('../controllers/users.controller')
 
 const usersRouter = Router();
@@ -14,6 +15,7 @@ usersRouter.route('/')
 
 usersRouter.route('/:userId')
 .get(getUserById)
+.patch(updateUser)
 
 usersRouter.route('/:userId/posts')
 .get(getUserPosts)
