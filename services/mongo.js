@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const keys = require('../config/keys');
 
 mongoose.connection
 .once('connected', () => {
@@ -12,7 +13,7 @@ mongoose.connection
 })
 
 async function connectMongo(){
-    await mongoose.connect(process.env.MONGO_URL);
+    await mongoose.connect(keys.MONGO_URL);
 }
 
 async function disconnectMongo(){

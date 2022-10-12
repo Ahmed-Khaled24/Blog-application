@@ -7,6 +7,7 @@ const {
     db_getUserById,
     db_addNewUser,
 } = require('../models/users/users.model');
+const keys = require('../config/keys')
 
 
 passport.serializeUser((user, done)=>{
@@ -58,8 +59,8 @@ async function googleVerify(accessToken, refreshToken, profile, done) {
 }
 
 passport.use(new googleStrategy({
-        clientID: process.env.GOOGLE_CLIENT_ID,
-        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        clientID: keys.GOOGLE_CLIENT_ID,
+        clientSecret: keys.GOOGLE_CLIENT_SECRET,
         callbackURL: '/auth/google/callback',
     }, googleVerify)
 );

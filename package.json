@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "jest --detectOpenHandlers",
-    "start": "node server.js",
-    "watch": "nodemon server.js"
+    "start": "set NODE_ENV=production&& node server.js",
+    "watch": "set NODE_ENV=dev&& nodemon server.js"
   },
   "engines": {
     "node": "16.16.0"
