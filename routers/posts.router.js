@@ -5,7 +5,7 @@ const {
     deletePost,
     addNewPost,
 } = require('../controllers/posts.controller');
-const { checkLoggedIn } = require('../util/auth.util');
+const  checkLoggedIn  = require('../middlewares/checkLoggedIn');
 
 const postsRouter = Router();
 

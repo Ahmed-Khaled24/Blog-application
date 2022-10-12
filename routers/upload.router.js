@@ -1,6 +1,6 @@
 const {Router} = require('express');
 const {getPutSignedUrl} = require('../controllers/upload.controller');
-const {checkLoggedIn} = require('../util/auth.util')
+const  checkLoggedIn  = require('../middlewares/checkLoggedIn');
 const uploadRouter = Router();
 
 uploadRouter.get('/requestUploadUrl',checkLoggedIn,  getPutSignedUrl);

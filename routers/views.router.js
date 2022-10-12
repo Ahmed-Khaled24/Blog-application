@@ -1,5 +1,5 @@
 const {Router} = require('express');
-const {checkLoggedIn} = require('../util/auth.util');
+const  checkLoggedIn  = require('../middlewares/checkLoggedIn');
 const {db_getAllVisiblePosts} = require('../models/posts/posts.model');
 const {db_getUserPosts} = require('../models/users/users.model');
 

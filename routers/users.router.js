@@ -6,13 +6,15 @@ const {
     getUserPosts,
     updateUser,
 } = require('../controllers/users.controller')
+const  checkLoggedIn  = require('../middlewares/checkLoggedIn');
+
 
 const usersRouter = Router();
 
 usersRouter.route('/')
 .get(getAllUsersData)
 .post(addNewUser)
-.patch(updateUser)
+.patch(checkLoggedIn, updateUser)
 
 usersRouter.route('/:userId')
 .get(getUserById)
