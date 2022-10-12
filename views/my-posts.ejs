@@ -24,7 +24,9 @@
                         </div>
                         <div class="metadata-container">
                             <div class="visual-data">
-                                <img src=<%= 'https://blogs-website-bucket.s3.eu-west-3.amazonaws.com/'+post.createdBy.imageUrl %>  alt="">
+                                <% let imageSource; %>
+                                <% (post.createdBy.imageUrl === '/img/default.png') ? imageSource = post.createdBy.imageUrl : imageSource = 'https://blogs-website-bucket.s3.eu-west-3.amazonaws.com/' + post.createdBy.imageUrl; %>  
+                                <img src=<%= imageSource %> alt="userProfile">
                             </div>
                             <div class="text-data">
                                 <p class="post-metadata"> <%= post.createdBy.firstName +' '+ post.createdBy.lastName %> </p>

@@ -5,7 +5,7 @@ const uuid = require('uuid');
 
 
 async function getPutSignedUrl(req, res) {
-    const key = `${req.user.id}/${uuid.v1()}.jpg`; // File name in aws s3 bucket
+    const key = `${req.user.id}/${uuid.v1()}`; // File name in aws s3 bucket
     const putCommand = new PutObjectCommand({
         Key: key,
         Bucket: process.env.BUCKET_NAME,

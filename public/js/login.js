@@ -4,8 +4,8 @@ const login_form = document.querySelector('form');
 
 login_form.addEventListener('submit', async (event) => {
     event.preventDefault();
-    login_btn.disable = 'true';
-    const email = document.querySelector('input[name=email]').value;
+    startLoader();
+    const email = document.querySelector('input[name=email]').value.toLowerCase().trim();
     const password = document.querySelector('input[name=password]').value;
     
     try {
@@ -20,13 +20,23 @@ login_form.addEventListener('submit', async (event) => {
         if(login_response === 'Authorized') {
             window.location.href = '/all-posts'
         } else {
-            login_btn.disable = 'false';
             throw new Error('invalid email or password');
         }
     } catch(err) {
+        stopLoader();
         addErrorElement(err.message);
     }
 })
 
+
+function startLoader(){
+    login_btn.disabled = true;
+    login_btn.innerHTML = '<div class="loader"> </div>';
+}
+
+function stopLoader(){
+    login_btn.disabled = false;
+    login_btn.innerHTML = 'Login';
+}
 
 

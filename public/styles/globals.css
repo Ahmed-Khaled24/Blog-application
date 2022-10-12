@@ -16,9 +16,27 @@
     width: 400px;
 }
 
+.loader {
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    border: 3px solid transparent;
+    border-top-color: white;
+    border-bottom-color: white;
+    animation: an1 0.7s ease infinite;
+}
+@keyframes an1 {
+    0% {
+        transform: rotate(0turn);
+    }
+    100% {
+        transform: rotate(1turn);
+    }
+}
+
 img {
     padding: 0px;
-    width: 400px;
+    width: 500px;
 }
 
 footer{
@@ -50,7 +68,7 @@ section {
 
 /* Scroll bar */
 ::-webkit-scrollbar {
-    width: 15px;
+    width: 10px;
 }
 ::-webkit-scrollbar-track {
     background: #212529;

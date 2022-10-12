@@ -3,9 +3,10 @@ const singUp_form = document.querySelector('form');
 
 singUp_form.addEventListener('submit', async (event) => {
     event.preventDefault();
-    const firstName = document.querySelector('input[name="firstName"]').value;
-    const lastName = document.querySelector('input[name="lastName"]').value;
-    const email = document.querySelector('input[name="email"]').value;
+    startLoader();
+    const firstName = document.querySelector('input[name="firstName"]').value.trim();
+    const lastName = document.querySelector('input[name="lastName"]').value.trim();
+    const email = document.querySelector('input[name="email"]').value.toLowerCase().trim();
     const password = document.querySelector('input[name="password"]').value;
     const confirmPassword = document.querySelector('input[name="confirmPassword"]').value;
 
@@ -15,8 +16,8 @@ singUp_form.addEventListener('submit', async (event) => {
 
     const validationMessage= validateUser({...user, confirmPassword});
     if(validationMessage !== 'valid'){
-        addErrorElement(validationMessage);
-        return;
+        stopLoader();
+        return addErrorElement(validationMessage);
     }
 
     try {
@@ -51,6 +52,17 @@ singUp_form.addEventListener('submit', async (event) => {
         }
 
     } catch(err) {
+        stopLoader();
         addErrorElement(err.message);
     }
 })
+
+function startLoader(){
+    singUp_btn.disabled = true;
+    singUp_btn.innerHTML = '<div class="loader"> </div>';
+}
+
+function stopLoader(){
+    singUp_btn.disabled = false;
+    singUp_btn.innerHTML = 'Sign up';
+}

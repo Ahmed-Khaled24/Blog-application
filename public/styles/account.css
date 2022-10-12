@@ -1,5 +1,6 @@
 h1{
-    margin: 30px
+    margin: 30px;
+    text-align: center;
 }
 
 img {
@@ -26,9 +27,14 @@ img {
 .visual-section{
    gap: 15px;
 }
+.visual-section p {
+    margin: 0;
+}
 
 #upload-btn{
     width: 250px;
+    display: flex;
+    justify-content: center;
 }
 
 @media (max-width: 750px){

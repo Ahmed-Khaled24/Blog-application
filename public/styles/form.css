@@ -13,7 +13,8 @@
 
 .form_ form button{
     margin-bottom: 10px;
-    display: block;
+    display: flex;
+    justify-content: center;
     width: 350px;
 }
 

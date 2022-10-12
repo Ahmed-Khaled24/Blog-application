@@ -13,7 +13,7 @@ for(let btn of deleteButtons) {
                 body: JSON.stringify({postId})
             });
             deleteResponse = await deleteResponse.json();
-            if( deleteResponse.status === 'success') {
+            if(deleteResponse.status === 'success') {
                 window.location.reload();
             } else {
                 throw new Error(deleteResponse.message);

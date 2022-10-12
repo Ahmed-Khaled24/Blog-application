@@ -34,7 +34,7 @@ function simplifyDate(postDate) {
 
 	const minutes = Math.floor((renderAt - createdAt) / (1000 * 60));
 	if (minutes < 1) {
-		return 'Now';
+		return 'now';
 	}
 	else if (minutes == 1) {
 		return `${minutes} minute ago`;
