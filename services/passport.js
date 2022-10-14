@@ -61,6 +61,6 @@ async function googleVerify(accessToken, refreshToken, profile, done) {
 passport.use(new googleStrategy({
         clientID: keys.GOOGLE_CLIENT_ID,
         clientSecret: keys.GOOGLE_CLIENT_SECRET,
-        callbackURL: '/auth/google/callback',
+        callbackURL: keys.GOOGLE_CALLBACK,
     }, googleVerify)
 );
