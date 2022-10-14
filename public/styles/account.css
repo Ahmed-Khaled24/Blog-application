@@ -4,7 +4,7 @@ h1{
 }
 
 img {
-    width: 250px;
+    width: 100%;
 }
 
 .account-info {
@@ -25,16 +25,21 @@ img {
 }
 
 .visual-section{
+    width: 250px;
    gap: 15px;
+   align-items: center;
 }
 .visual-section p {
     margin: 0;
     font-size: 14px;
     text-align: center;
 }
+.visual-section input {
+    width: 100%;
+}
 
 #upload-btn{
-    width: 250px;
+    width: 100%;
     display: flex;
     justify-content: center;
 }
@@ -42,9 +47,6 @@ img {
 @media (max-width: 750px){
     .account-info{
         flex-direction: column;
-    }
-    .account-section{
-        width: 250px;
     }
     .text-section {
         width: 350px;
