@@ -12,7 +12,7 @@ viewsRouter.get('/',
         if(req.isAuthenticated()){
             return res.redirect('all-posts');
         } else {
-            return res.render('home');
+            return res.render('login');
         }
     }
 );

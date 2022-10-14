@@ -6,7 +6,7 @@
 }
 
 .post{
-    width: 600px;
+    width: 500px;
     margin: 20px;
     padding: 20px;
     background-color: rgb(252, 252, 252);
@@ -27,6 +27,9 @@
     font-size: 12px;
     font-weight: 400;
     font-family: 'Lato', sans-serif;
+}
+.username{
+    font-weight: bold;
 }
 
 .image-container{
@@ -95,20 +98,14 @@
 }
 
 @media (max-width: 650px){
-    .post{
+    .post {
         width: 400px;
-    }
-    img {
-        width: 350px;
     }
 }
 
 @media (max-width: 430px){
     .post{
         width: 300px;
-    }
-    img {
-        width: 250px;
     }
     .post-title {
         font-size: 20px;

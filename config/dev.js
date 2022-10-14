@@ -1,7 +1,7 @@
 module.exports = {
     PORT: 3000,
     SESSION_SECRET: process.env.SESSION_SECRET,
-    MONGO_URL: 'mongodb://localhost:27017/blog',
+    MONGO_URL: 'mongodb://localhost:27017/Blog',
     GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID_DEV,
     GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET_DEV,
     S3_ACCESS_KEY_ID: process.env.S3_ACCESS_KEY_ID,

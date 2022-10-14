@@ -1,13 +1,13 @@
 # Blog application:
 
-Blog web application build using Node.js - MongoDB for backend,  
-HTML - CSS - Bootstrap - ejs view engine for frontend.
+Blog website build using Node.js - MongoDB - AWS S3 for backend,  
+HTML - CSS - JS - Bootstrap - ejs view engine for frontend.
 
 ### [**TRY HOSTED VERSION**](https://kh-blog-website.herokuapp.com)
 
 ## Important concepts implemented in this application
 
--  REST API
+-  RESTful API
 -  User authentication
 -  Server side cookies 
 -  MVC design pattern
@@ -15,22 +15,26 @@ HTML - CSS - Bootstrap - ejs view engine for frontend.
 
 ## UI explained 
 
-**All UI elements already explained in the home page of the app.**
+**All Posts:** this page contains all the posts created by all the users on  
+the website ordered by date of creation, in this page you can use plus button to create new posts.
 
-**ALL POSTS:** this page contains all the posts created by all the users on  
-this site ordered by date of creation, in this page you can use Add new  
-post button to create posts.
-
-**MY POSTS:** this page contains all the posts created by you ordered by date  
+**My Posts:** this page contains all the posts created by you ordered by date  
 of creation, in this page you can delete any of your posts.
 
-**ACCOUNT:** this page contains the data for the current logged in user.
+**Account:** this page contains the data for the current logged-in user.
 
 ## UI photos
 
-- ### ALL POSTS:
-![allposts](/public/img/README/allPosts.png)
-- ### MY POSTS:
-![myPosts](public/img/README/myPosts.png)
-- ### ACCOUNT:
-![account](public/img/README/account.png)
+### Desktop version:
+![](./README/1.png) 
+![](./README/4.png)
+![](./README/2.png)
+![](./README/3.png)
+
+### Mobile phone version:
+![](./README/mobile1.png)   
+![](./README/mobile2.png)   
+![](./README/mobile3.png)   
+![](./README/mobile4.png)   
+
+
