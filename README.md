@@ -1,7 +1,7 @@
 # Blog application:
 
-Blog website build using Node.js - MongoDB - AWS S3 for backend,  
-HTML - CSS - JS - Bootstrap - ejs view engine for frontend.
+Blog website built using Node.js - MongoDB - AWS S3 for backend,  
+HTML - CSS - JS - Bootstrap for frontend.
 
 ### [**TRY HOSTED VERSION**](https://kh-blog-website.herokuapp.com)
 
