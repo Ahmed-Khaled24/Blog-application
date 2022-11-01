@@ -26,7 +26,7 @@
             <input class="form-control" type="text" value= <%= user.email %>  disabled readonly>     
         </div>
         <div class="account-section visual-section">
-            <p> For a perfect fit use a squared photo </p>
+            <p> For a perfect fit use square photo </p>
             <% let imageSource; %>
             <% (user.imageUrl === '/img/default.png') ? imageSource = user.imageUrl : imageSource = 'https://blogs-website-bucket.s3.eu-west-3.amazonaws.com/'+user.imageUrl; %>  
             <img src=<%= imageSource %> alt="userProfile">
