@@ -3,7 +3,7 @@
 Blog website built using Node.js - MongoDB - AWS S3 for backend,  
 HTML - CSS - JS - Bootstrap for frontend.
 
-### [**TRY HOSTED VERSION**](https://kh-blog-website.herokuapp.com)
+### [**TRY HOSTED VERSION**](http://44.204.145.165:3000/)
 
 ## Important concepts implemented in this application
 
