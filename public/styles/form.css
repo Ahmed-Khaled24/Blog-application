@@ -55,4 +55,5 @@ a img {
 
 .btn-light{
     border: 2px solid #ced4da;
+    pointer-events: none;
 }

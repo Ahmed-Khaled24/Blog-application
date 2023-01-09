@@ -8,21 +8,14 @@
 
 .post{
     width: 500px;
-<<<<<<< HEAD
-=======
-    margin: 20px 0;
->>>>>>> 0f735d7 (feat: update post, login, sign up styling)
     padding: 20px;
     background-color: rgb(252, 252, 252);
     border-radius: 15px;
     display: flex;
     flex-direction: column;
     gap:10px;
-<<<<<<< HEAD
     position: relative;
     box-shadow: 3px 3px 10px 0px #e9ecef;
-=======
->>>>>>> 0f735d7 (feat: update post, login, sign up styling)
 }
 
 .post p, .post h2 {
@@ -31,16 +24,10 @@
 
 .post-title{
     font-weight: 700;
-<<<<<<< HEAD
     font-size: 28px;
     font-family: 'Lato', sans-serif;
     letter-spacing: -1px;
     padding-right: 20px;
-=======
-    font-size: 32px;
-    font-family: 'Lato', sans-serif;
-    letter-spacing: -1px;
->>>>>>> 0f735d7 (feat: update post, login, sign up styling)
 }
 
 .post-metadata{
@@ -48,11 +35,7 @@
     font-family: 'Lato', sans-serif;
 }
 .username{
-<<<<<<< HEAD
     font-size: 12px;
-=======
-    font-size: 13px;
->>>>>>> 0f735d7 (feat: update post, login, sign up styling)
     font-weight: bold;
 }
 
