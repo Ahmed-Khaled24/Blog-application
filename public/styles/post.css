@@ -89,6 +89,7 @@
     align-items: center;
     justify-content: center;
     font-size: 40px;
+    z-index: 1;
 }
 
 #postId{
@@ -114,7 +115,7 @@
 
 @media (max-width: 430px){
     .post{
-        width: 300px;
+        width: 90%;
     }
     .post-title {
         font-size: 20px;
