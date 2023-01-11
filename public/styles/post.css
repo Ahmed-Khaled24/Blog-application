@@ -40,9 +40,12 @@
 }
 
 .image-container{
-    width: 100%;
+    max-height: 450px;
     display: flex;
     justify-content: center;
+}
+.image-container img {
+    object-fit: contain;
 }
 
 .post-body{
