@@ -7,5 +7,5 @@ module.exports = {
     S3_ACCESS_KEY_ID: process.env.S3_ACCESS_KEY_ID,
     S3_SECRET_ACCESS_KEY: process.env.S3_SECRET_ACCESS_KEY,
     BUCKET_NAME: 'blogs-website-bucket',
-    GOOGLE_CALLBACK: 'https://kh-blog-website.herokuapp.com/auth/google/callback',
+    GOOGLE_CALLBACK: '/auth/google/callback',
 }
