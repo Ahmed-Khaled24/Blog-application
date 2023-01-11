@@ -3,7 +3,7 @@
 Blogs website built using Node.js - MongoDB - AWS S3 for backend,  
 HTML - CSS - JS - Bootstrap for frontend.
 
-## [**Try it live**](http://44.204.145.165:3000/)
+## [**Try it live**](http://khblog.ddns.net:3000/)
 
 ## Important concepts implemented in this application
 
